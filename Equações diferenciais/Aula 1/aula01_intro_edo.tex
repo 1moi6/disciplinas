@@ -1,0 +1,572 @@
+\documentclass[12pt]{beamer}
+\usetheme{Boadilla}
+\usecolortheme{default}
+
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, calc}
+
+% ── Paleta de cores ──────────────────────────────────────────────
+\definecolor{azulEDO}{RGB}{30, 80, 150}
+\definecolor{verdeHip}{RGB}{20, 120, 80}
+\definecolor{vermelhoAlerta}{RGB}{180, 40, 40}
+\definecolor{cinzaFundo}{RGB}{245, 245, 248}
+
+\setbeamercolor{frametitle}{bg=azulEDO, fg=white}
+\setbeamercolor{title}{fg=azulEDO}
+\setbeamercolor{structure}{fg=azulEDO}
+\setbeamercolor{block title example}{bg=verdeHip!80!black, fg=white}
+\setbeamercolor{block body example}{bg=verdeHip!10}
+\setbeamercolor{block title alerted}{bg=vermelhoAlerta!85, fg=white}
+\setbeamercolor{block body alerted}{bg=vermelhoAlerta!8}
+
+% ── Metadados ────────────────────────────────────────────────────
+\title{Introdução às Equações Diferenciais}
+\subtitle{Aula 1 — O que é uma equação diferencial e por que ela aparece}
+\author{}
+\institute{Equações Diferenciais Ordinárias}
+\date{}
+
+% ── Macro para hipótese ──────────────────────────────────────────
+\newcommand{\hipotese}[4]{%
+  \begin{block}{Hipótese #1 — #2}
+    \textbf{Enunciado:} #3\\[4pt]
+    \textbf{Custo:} #4
+  \end{block}%
+}
+
+% ── Suprime botões de navegação ──────────────────────────────────
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[frame number]
+
+% ─────────────────────────────────────────────────────────────────
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% ================================================================
+%  BLOCO 1 — PROBLEMA CONCRETO
+% ================================================================
+
+\begin{frame}{Uma pergunta simples — sem equações}
+
+  \begin{center}
+    {\large Você prepara um café a \textbf{90\,°C}.}\\[6pt]
+    A sala está a \textbf{20\,°C}.\\[14pt]
+    \textit{Quanto tempo leva até o café atingir \textbf{60\,°C}?}
+  \end{center}
+
+  \vfill
+  \pause
+
+  \begin{columns}[T]
+    \column{0.48\textwidth}
+      \textbf{O que você sabe:}
+      \begin{itemize}
+        \item O café começa quente e esfria.
+        \item Quanto maior a diferença de temperatura, mais rápido esfria.
+        \item Eventualmente chega à temperatura da sala.
+      \end{itemize}
+
+    \column{0.48\textwidth}
+      \textbf{O que você \emph{não} sabe:}
+      \begin{itemize}
+        \item Em que instante exatamente?
+        \item A que taxa o resfriamento ocorre?
+        \item Como calcular isso?
+      \end{itemize}
+  \end{columns}
+
+  \vfill
+  \begin{alertblock}{}
+    \centering
+    Para responder com precisão, precisamos de uma linguagem melhor.
+  \end{alertblock}
+
+\end{frame}
+
+% ----------------------------------------------------------------
+\begin{frame}{O que a intuição diz sobre a taxa de resfriamento?}
+
+  Seja $T(t)$ a temperatura do café no instante $t$ (em minutos).
+
+  \vspace{10pt}
+  A linguagem verbal já contém a ideia-chave:
+
+  \vspace{8pt}
+  \begin{exampleblock}{}
+    \centering
+    \textit{``quanto maior a diferença, mais rápido esfria''}
+  \end{exampleblock}
+
+  \vspace{10pt}
+  \pause
+
+  Em símbolos, isso é uma afirmação sobre a \textbf{taxa de variação} de $T$:
+  \[
+    \frac{dT}{dt} \quad \text{depende de} \quad T(t) - T_m
+  \]
+  onde $T_m = 20\,°C$ é a temperatura do meio.
+
+  \vspace{10pt}
+  \pause
+
+  \begin{alertblock}{Pergunta}
+    Qual é exatamente essa dependência?
+    \quad Como transformar a intuição em equação?
+  \end{alertblock}
+
+\end{frame}
+
+% ================================================================
+%  BLOCO 2 — HIPÓTESES E EMERGÊNCIA DA EDO
+% ================================================================
+
+\begin{frame}{Hipótese 1 — Temperatura uniforme}
+
+  \hipotese{1}{Temperatura uniforme}{%
+    O café tem \textbf{uma única temperatura} em cada instante $t$:
+    a função $T(t)$ está bem definida.%
+  }{%
+    Não modelamos gradientes internos nem a xícara em si.%
+  }
+
+  \vspace{10pt}
+  \pause
+
+  \textbf{Ganho:} $T$ é uma função de \emph{uma} variável — $t$.
+
+  \vspace{8pt}
+  \textbf{Quando é razoável:}
+  \begin{itemize}
+    \item Xícara pequena, líquido bem misturado.
+    \item Não vale para um forno ou para o oceano.
+  \end{itemize}
+
+  \vspace{8pt}
+  \textbf{Consequência matemática:} podemos falar de $\dfrac{dT}{dt}$.
+
+\end{frame}
+
+% ----------------------------------------------------------------
+\begin{frame}{Hipótese 2 — Lei de Newton do Resfriamento}
+
+  \hipotese{2}{Proporcionalidade}{%
+    A taxa de variação de $T$ é \textbf{proporcional}
+    à diferença $T(t) - T_m$.%
+  }{%
+    Falha para grandes diferenças de temperatura
+    ou se $T_m$ variar ao longo do tempo.%
+  }
+
+  \vspace{10pt}
+  \pause
+
+  \textbf{Tradução imediata:}
+  \[
+    \frac{dT}{dt} = k\bigl(T(t) - T_m\bigr), \qquad k < 0.
+  \]
+
+  \vspace{6pt}
+  \pause
+
+  \begin{exampleblock}{A equação emergiu — não foi postulada}
+    Cada símbolo carrega uma hipótese:
+    \begin{itemize}
+      \item $T(t)$: Hipótese 1 (temperatura bem definida).
+      \item $k$: Hipótese 2 (proporcionalidade; $k<0$ porque o café esfria).
+      \item $T_m$: temperatura do meio, considerada constante.
+    \end{itemize}
+  \end{exampleblock}
+
+\end{frame}
+
+% ================================================================
+%  BLOCO 3 — O NOVO OBJETO MATEMÁTICO
+% ================================================================
+
+\begin{frame}{Compare: dois tipos de equação}
+
+  \begin{columns}[T]
+
+    \column{0.45\textwidth}
+      \begin{block}{Equação algébrica}
+        \[
+          x^2 + 5x + 4 = 0
+        \]
+        \vspace{4pt}
+        \textbf{Incógnita:} um número $x$.\\[4pt]
+        \textbf{Solução:} $x = -1$ ou $x = -4$.
+      \end{block}
+
+    \column{0.45\textwidth}
+      \begin{block}{Equação diferencial}
+        \[
+          \frac{dT}{dt} = k(T - T_m)
+        \]
+        \vspace{4pt}
+        \textbf{Incógnita:} uma \emph{função} $T(t)$.\\[4pt]
+        \textbf{Solução:} uma função que satisfaz a relação.
+      \end{block}
+
+  \end{columns}
+
+  \vspace{14pt}
+  \pause
+
+  \begin{exampleblock}{Conclusão 1}
+    Uma \textbf{equação diferencial (ED)} é uma equação que envolve
+    uma função desconhecida e suas derivadas.
+    A incógnita é uma \emph{função}, não um número.
+  \end{exampleblock}
+
+\end{frame}
+
+% ----------------------------------------------------------------
+\begin{frame}{Classificação: vocabulário para descrever EDOs}
+
+  Vamos falar sobre a equação que já temos:
+  \[
+    \frac{dT}{dt} = k(T - T_m).
+  \]
+
+  \vspace{6pt}
+  \begin{columns}[T]
+
+    \column{0.48\textwidth}
+      \textbf{Tipo}\\[4pt]
+      Derivadas em relação a \emph{uma} variável ($t$)?
+      \[
+        \Rightarrow \text{EDO (ordinária)}
+      \]
+      \vspace{4pt}
+      Derivadas parciais?
+      \[
+        \Rightarrow \text{EDP (parcial)}
+      \]
+
+    \column{0.48\textwidth}
+      \textbf{Ordem}\\[4pt]
+      Maior derivada presente: $\dfrac{dT}{dt}$ (1ª derivada).
+      \[
+        \Rightarrow \text{Ordem } \mathbf{1}
+      \]
+
+      \vspace{6pt}
+      \textbf{Linearidade}\\[4pt]
+      $T$ e $T'$ aparecem ao 1º grau, coeficientes dependem de $t$.
+      \[
+        \Rightarrow \text{Linear}
+      \]
+
+  \end{columns}
+
+\end{frame}
+
+% ----------------------------------------------------------------
+\begin{frame}{Mais exemplos de classificação}
+
+  \begin{center}
+  \renewcommand{\arraystretch}{2.0}
+  \begin{tabular}{lcc}
+    \hline
+    \textbf{Equação} & \textbf{Ordem} & \textbf{Linear?} \\
+    \hline
+    $\dfrac{dT}{dt} = k(T - T_m)$
+      & 1 & Sim \\
+    $\dfrac{d^2y}{dx^2} - 2\dfrac{dy}{dx} + y = 0$
+      & 2 & Sim \\
+    $\dfrac{dy}{dx} = xy^{1/2}$
+      & 1 & Não \\
+    $\dfrac{d^2y}{dx^2} + 5\!\left(\dfrac{dy}{dx}\right)^{\!3} - 4y = e^x$
+      & 2 & Não \\
+    \hline
+  \end{tabular}
+  \end{center}
+
+  \vspace{8pt}
+  \pause
+
+  \begin{alertblock}{Regra para linearidade}
+    A EDO de ordem $n$ é \textbf{linear} se $y, y', \ldots, y^{(n)}$
+    aparecem ao \textbf{1º grau} e os coeficientes dependem
+    \emph{apenas} da variável independente.
+  \end{alertblock}
+
+\end{frame}
+
+% ================================================================
+%  BLOCO 4 — SOLUÇÃO E PVI
+% ================================================================
+
+\begin{frame}{O que é uma solução?}
+
+  De volta ao café.
+  \[
+    \frac{dT}{dt} = k(T - 20).
+  \]
+
+  \pause
+  \vspace{6pt}
+  \textbf{Afirmação:} a função $T(t) = 20 + 70\,e^{kt}$ satisfaz a equação.
+
+  \vspace{6pt}
+  \textbf{Verifique:}
+  \[
+    \frac{dT}{dt} = 70k\,e^{kt}, \qquad
+    k(T - 20) = k \cdot 70\,e^{kt}. \quad \checkmark
+  \]
+
+  \pause
+  \vspace{6pt}
+  \begin{exampleblock}{Definição — Solução de uma EDO}
+    Uma função $\phi(t)$, definida em um intervalo $I$,
+    é \textbf{solução} da EDO se, ao substituir $\phi$ na equação,
+    ela se torna uma \textbf{identidade} em $I$.
+  \end{exampleblock}
+
+  \pause
+  \vspace{6pt}
+  Note que $T(t) = 20 + Ce^{kt}$ é solução para \emph{qualquer} constante $C$.
+  Isso é a \textbf{família de soluções (solução geral)}.
+
+\end{frame}
+
+% ----------------------------------------------------------------
+\begin{frame}{Problema de Valor Inicial (PVI)}
+
+  A família $T(t) = 20 + Ce^{kt}$ tem infinitas soluções.
+
+  \vspace{8pt}
+  \textbf{A pergunta original exige mais:}
+  o café começa a \textbf{90\,°C} no instante $t = 0$.
+
+  \[
+    \frac{dT}{dt} = k(T - 20), \qquad \underbrace{T(0) = 90}_{\text{condição inicial}}.
+  \]
+
+  \pause
+  \vspace{6pt}
+  Aplicando: $T(0) = 20 + C = 90 \;\Rightarrow\; C = 70$.
+
+  \vspace{6pt}
+  \[
+    \boxed{T(t) = 20 + 70\,e^{kt}}
+  \]
+
+  \pause
+  \vspace{6pt}
+  \begin{exampleblock}{Definição — PVI}
+    Um \textbf{problema de valor inicial} é uma EDO acompanhada de
+    condições sobre a função (e suas derivadas) em um único ponto $t_0$.
+    Resolver o PVI é encontrar a \textbf{solução particular}.
+  \end{exampleblock}
+
+\end{frame}
+
+% ================================================================
+%  BLOCO 5 — VISUALIZAÇÃO QUALITATIVA
+% ================================================================
+
+\begin{frame}{O que a equação já nos diz — sem resolver}
+
+  \[
+    \frac{dT}{dt} = k(T - 20), \qquad k < 0.
+  \]
+
+  \vspace{6pt}
+  Análise de sinal sem integrar:
+
+  \vspace{8pt}
+  \begin{columns}[T]
+
+    \column{0.48\textwidth}
+      \textbf{Se $T > 20$:}\\
+      $T - 20 > 0$ e $k < 0$\\
+      $\Rightarrow \dfrac{dT}{dt} < 0$\\[6pt]
+      O café \textbf{esfria}. ✓
+
+    \column{0.48\textwidth}
+      \textbf{Se $T < 20$:}\\
+      $T - 20 < 0$ e $k < 0$\\
+      $\Rightarrow \dfrac{dT}{dt} > 0$\\[6pt]
+      Um objeto frio \textbf{aquece}. ✓
+
+  \end{columns}
+
+  \vspace{10pt}
+  \pause
+
+  \begin{exampleblock}{Equilíbrio}
+    $\dfrac{dT}{dt} = 0 \;\Leftrightarrow\; T = 20$. \\[4pt]
+    A solução constante $T(t) = 20$ é chamada de
+    \textbf{solução de equilíbrio}.
+  \end{exampleblock}
+
+  \vspace{4pt}
+  \pause
+  \small
+  Essa análise qualitativa — sem resolver — é uma das três abordagens
+  do curso: \textbf{analítica}, \textbf{qualitativa}, \textbf{numérica}.
+
+\end{frame}
+
+% ================================================================
+%  BLOCO 6 — O MESMO MODELO, FENÔMENOS DIFERENTES
+% ================================================================
+
+\begin{frame}{Uma equação, muitos fenômenos}
+
+  \[
+    \frac{dy}{dt} = ky
+  \]
+
+  \vspace{6pt}
+  \begin{columns}[T]
+
+    \column{0.30\textwidth}
+      \textbf{Crescimento\\populacional}\\[4pt]
+      $y = P(t)$: população.\\[4pt]
+      $k > 0$: crescimento.\\[4pt]
+      \textit{(Malthus, 1798)}
+
+    \column{0.30\textwidth}
+      \textbf{Decaimento\\radioativo}\\[4pt]
+      $y = A(t)$: massa.\\[4pt]
+      $k < 0$: decaimento.\\[4pt]
+      \textit{(datação C-14)}
+
+    \column{0.30\textwidth}
+      \textbf{Juros\\compostos}\\[4pt]
+      $y = S(t)$: capital.\\[4pt]
+      $k = r > 0$: taxa.\\[4pt]
+      \textit{(capitalização)}
+
+  \end{columns}
+
+  \vspace{14pt}
+  \pause
+
+  \begin{exampleblock}{Conclusão 2}
+    Uma única EDO pode servir como modelo matemático
+    para fenômenos muito diferentes.
+    O que muda é a \textbf{interpretação dos símbolos}.
+  \end{exampleblock}
+
+\end{frame}
+
+% ================================================================
+%  BLOCO 7 — SÍNTESE
+% ================================================================
+
+\begin{frame}{Síntese — Como chegamos até aqui}
+
+  \begin{enumerate}
+    \setlength\itemsep{8pt}
+    \item Partimos de um \textbf{problema concreto}: resfriamento do café.
+    \item Formulamos \textbf{duas hipóteses} (temperatura uniforme;
+          resfriamento proporcional à diferença).
+    \item A EDO \textbf{emergiu} das hipóteses:
+          $\dfrac{dT}{dt} = k(T - T_m)$.
+    \item Definimos \textbf{solução} como função que satisfaz
+          a equação identicamente.
+    \item O \textbf{PVI} seleciona uma solução particular da família.
+    \item A \textbf{análise qualitativa} extraiu informação
+          \emph{antes} de resolver.
+  \end{enumerate}
+
+  \vspace{10pt}
+  \pause
+
+  \begin{columns}[T]
+    \column{0.48\textwidth}
+      \textbf{Vocabulário da aula:}
+      \begin{itemize}
+        \item EDO / EDP, ordem, linearidade
+        \item Solução geral, solução particular
+        \item Problema de valor inicial (PVI)
+        \item Solução de equilíbrio
+      \end{itemize}
+    \column{0.48\textwidth}
+      \textbf{Três abordagens do curso:}
+      \begin{itemize}
+        \item Analítica (resolver explicitamente)
+        \item Qualitativa (análise de sinal, campo de direções)
+        \item Numérica (aproximar a solução)
+      \end{itemize}
+  \end{columns}
+
+\end{frame}
+
+% ================================================================
+%  BLOCO 8 — PONTE PARA A PRÓXIMA AULA
+% ================================================================
+
+\begin{frame}{Próxima aula — Uma pergunta que ainda não respondemos}
+
+  Temos a solução $T(t) = 20 + 70\,e^{kt}$, mas ainda não sabemos $k$.
+
+  \vspace{10pt}
+  Para determinar $k$ a partir de dados, precisamos \textbf{resolver} a equação
+  de forma sistemática.
+
+  \vspace{10pt}
+  \pause
+
+  \begin{alertblock}{Pergunta em aberto}
+    $\dfrac{dT}{dt} = k(T - 20)$ pode ser reescrita como
+    \[
+      \frac{dT}{T - 20} = k\,dt.
+    \]
+    \vspace{4pt}
+    Isso é uma coincidência útil ou existe uma classe inteira de
+    equações que admitem essa separação?
+  \end{alertblock}
+
+  \vspace{10pt}
+  \pause
+
+  \begin{center}
+    \textbf{Próxima aula:} Equações Separáveis.\\[4pt]
+    \small Pré-requisito: técnicas de integração (substitução, frações parciais).
+  \end{center}
+
+\end{frame}
+
+% ================================================================
+%  APÊNDICE — EXERCÍCIOS
+% ================================================================
+
+\begin{frame}{Exercícios}
+
+  \begin{enumerate}
+    \setlength\itemsep{8pt}
+
+    \item Verifique que $y = e^{0{,}1x^2}$ é solução de
+          $\dfrac{dy}{dx} = 0{,}2xy$ no intervalo $(-\infty, +\infty)$.
+
+    \item Classifique as equações abaixo quanto a tipo, ordem e linearidade:
+          \begin{enumerate}[(a)]
+            \item $\dfrac{d^2x}{dt^2} + 16x = 0$
+            \item $\dfrac{\partial^2 u}{\partial x^2}
+                  + \dfrac{\partial^2 u}{\partial y^2} = 0$
+            \item $(1-y)\,y' + 2y = e^x$
+          \end{enumerate}
+
+    \item Mostre que $y = xe^x$ é solução de $y'' - 2y' + y = 0$.
+
+    \item Para o modelo $\dfrac{dP}{dt} = 0{,}15P + 20$, $P(0) = 100$:
+          \begin{enumerate}[(a)]
+            \item Qual é a taxa de crescimento em $t = 0$?
+            \item Sem resolver, diga se $P(t)$ é crescente ou decrescente.
+          \end{enumerate}
+
+  \end{enumerate}
+
+\end{frame}
+
+\end{document}

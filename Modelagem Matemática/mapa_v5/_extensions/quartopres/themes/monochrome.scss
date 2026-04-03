@@ -1,0 +1,24 @@
+/*-- scss:defaults --*/
+/*-- scss:rules --*/
+// monochrome — preto sobre branco
+// Legibilidade máxima; publicação, impressão em alta qualidade.
+
+:root {
+  --qp-bg-main:      #FFFFFF;
+  --qp-bg-panel:     #FFFFFF;
+  --qp-bg-header:    #F0F0F0;
+  --qp-accent:       #1A1A1A;
+  --qp-accent-light: #F0F0F0;
+  --qp-text-h1:      #0A0A0A;
+  --qp-text-h2:      #444444;
+  --qp-text-body:    #2A2A2A;
+  --qp-text-annot:   #888888;
+  --qp-stroke:       #CCCCCC;
+  --qp-divider:      #E0E0E0;
+  --qp-shadow:       #808080;
+}
+
+.reveal,
+.reveal .slides section {
+  background-color: var(--qp-bg-main) !important;
+}

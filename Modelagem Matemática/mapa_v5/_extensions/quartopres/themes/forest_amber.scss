@@ -1,0 +1,24 @@
+/*-- scss:defaults --*/
+/*-- scss:rules --*/
+// forest_amber — verde-floresta + âmbar/ouro
+// Orgânico, acolhedor; biologia, ciências naturais.
+
+:root {
+  --qp-bg-main:      #0D1F14;
+  --qp-bg-panel:     #132B1C;
+  --qp-bg-header:    #091610;
+  --qp-accent:       #F4B942;
+  --qp-accent-light: #FFF7E0;
+  --qp-text-h1:      #EEF7F0;
+  --qp-text-h2:      #C8A45A;
+  --qp-text-body:    #A8CDB0;
+  --qp-text-annot:   #4D8B60;
+  --qp-stroke:       #1E4028;
+  --qp-divider:      #162E1E;
+  --qp-shadow:       #030806;
+}
+
+.reveal,
+.reveal .slides section {
+  background-color: var(--qp-bg-main) !important;
+}

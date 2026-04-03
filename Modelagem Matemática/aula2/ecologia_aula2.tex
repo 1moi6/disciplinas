@@ -1,0 +1,407 @@
+\documentclass[12pt]{beamer}
+
+\usetheme{Boadilla}
+\usecolortheme{default}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage{amsmath, amssymb}
+\usepackage{booktabs}
+
+% Informações
+\title{O que causa variação na abundância?}
+\subtitle{Construindo o primeiro modelo populacional}
+\author{Modelagem Matemática}
+\institute{Matemática Aplicada}
+\date{Aula 02}
+
+\begin{document}
+
+% ── CAPA ──────────────────────────────────────────
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% ══════════════════════════════════════════════════
+\section{Ponte com a aula anterior}
+% ══════════════════════════════════════════════════
+
+\begin{frame}{Onde estamos}
+
+  Na aula anterior chegamos a duas conclusões:
+
+  \bigskip
+  \begin{block}{Conclusão 1 — A pergunta de Krebs}
+    Quais interações determinam \emph{onde} os organismos
+    ocorrem e em \emph{que quantidade}?
+  \end{block}
+
+  \begin{exampleblock}{Conclusão 2 — A linguagem necessária}
+    Para responder a essa pergunta, precisamos de uma linguagem
+    que represente como \textbf{quantidades mudam em função de interações}.
+    Essa linguagem é o \textbf{cálculo diferencial}.
+  \end{exampleblock}
+
+  \bigskip
+  Sabemos que queremos explicar $N(t)$ --- a abundância ao longo do tempo.
+
+  \bigskip
+  \textbf{Pergunta desta aula:} o que faz $N$ variar?
+
+\end{frame}
+
+% ══════════════════════════════════════════════════
+\section{Bloco 1 — Contabilidade populacional}
+% ══════════════════════════════════════════════════
+
+\begin{frame}{O que pode mudar o número de indivíduos?}
+
+  Antes de qualquer equação --- uma pergunta simples:
+
+  \bigskip
+  \begin{alertblock}{Pergunta}
+    Quais são todos os processos que podem \textbf{aumentar}
+    ou \textbf{diminuir} o número de indivíduos em uma população?
+  \end{alertblock}
+
+  \bigskip
+  Pense em uma população de capivaras no Pantanal.
+  O que pode fazer esse número subir? O que pode fazê-lo cair?
+
+\end{frame}
+
+% ──────────────────────────────────────────────────
+\begin{frame}{Quatro e apenas quatro processos}
+
+  Não importa a espécie, o ambiente ou a escala de tempo.
+  A variação em $N$ tem exatamente \textbf{quatro causas}:
+
+  \bigskip
+  \begin{columns}[t]
+    \column{0.48\textwidth}
+      \begin{exampleblock}{Aumentam $N$}
+        \begin{itemize}
+          \item \textbf{Nascimentos} ($B$)
+          \item \textbf{Imigração} ($I$)
+        \end{itemize}
+      \end{exampleblock}
+    \column{0.48\textwidth}
+      \begin{alertblock}{Diminuem $N$}
+        \begin{itemize}
+          \item \textbf{Mortes} ($D$)
+          \item \textbf{Emigração} ($E$)
+        \end{itemize}
+      \end{alertblock}
+  \end{columns}
+
+\end{frame}
+
+% ──────────────────────────────────────────────────
+\begin{frame}{Uma identidade contábil}
+
+  Isso não é um modelo --- é uma \textbf{identidade}.
+  Vale sempre, para qualquer população, sem nenhuma hipótese:
+
+  \[
+    \Delta N = B - D + I - E
+  \]
+
+  \bigskip
+  \begin{block}{Observação importante}
+    Uma identidade contábil \emph{descreve} o que acontece,
+    mas não \emph{explica} por que acontece.
+    Para explicar, precisamos entender o que determina
+    $B$, $D$, $I$ e $E$.
+  \end{block}
+
+  \bigskip
+  Essa será a tarefa das próximas aulas.
+  Por enquanto, vamos simplificar.
+
+\end{frame}
+
+% ══════════════════════════════════════════════════
+\section{Bloco 2 — População fechada}
+% ══════════════════════════════════════════════════
+
+\begin{frame}{Quando podemos ignorar migração?}
+
+  \begin{alertblock}{Pergunta}
+    Em quais situações podemos considerar que
+    imigração e emigração são desprezíveis?
+  \end{alertblock}
+
+  \bigskip
+  Exemplos:
+  \begin{itemize}
+    \item Uma população em uma ilha isolada
+    \item Uma espécie endêmica de uma bacia hidrográfica
+    \item Um experimento em laboratório
+  \end{itemize}
+
+\end{frame}
+
+% ──────────────────────────────────────────────────
+\begin{frame}{Hipótese 1 — População fechada}
+
+  \begin{exampleblock}{Hipótese explícita}
+    Assumimos que não há fluxo de indivíduos com outras populações:
+    $I = 0$ e $E = 0$.
+  \end{exampleblock}
+
+  \bigskip
+  A identidade contábil se reduz a:
+
+  \[
+    \Delta N = B - D
+  \]
+
+  \bigskip
+  \begin{block}{Atenção}
+    Toda hipótese simplificadora tem um custo.
+    Ao assumir população fechada, perdemos a capacidade
+    de modelar dispersão, recolonização e fluxo gênico.
+    Ganhamos em tratabilidade.
+  \end{block}
+
+\end{frame}
+
+% ──────────────────────────────────────────────────
+\begin{frame}{Nova pergunta}
+
+  Temos $\Delta N = B - D$.
+
+  \bigskip
+  \begin{alertblock}{Pergunta}
+    $B$ e $D$ dependem de quê?
+  \end{alertblock}
+
+  \bigskip
+  Uma população de 1000 capivaras produz mais filhotes
+  que uma de 10 capivaras --- isso é óbvio.
+
+  \bigskip
+  Mas será que \emph{cada capivara} contribui da mesma forma
+  nos dois casos?
+
+  \bigskip
+  O que seria mais informativo comparar?
+
+\end{frame}
+
+% ══════════════════════════════════════════════════
+\section{Bloco 3 — Taxas per capita}
+% ══════════════════════════════════════════════════
+
+\begin{frame}{Taxas per capita}
+
+  O que é constante --- se é que algo é constante --- não é
+  o número total de nascimentos, mas a \textbf{contribuição por indivíduo}.
+
+  \bigskip
+  Definimos as \textbf{taxas per capita}:
+
+  \[
+    b = \frac{B}{N} \qquad d = \frac{D}{N}
+  \]
+
+  onde $b$ é a taxa de natalidade per capita e
+  $d$ é a taxa de mortalidade per capita.
+
+  \bigskip
+  \begin{block}{Intuição}
+    $b = 0{,}3$ significa que, em média, cada indivíduo
+    contribui com 0,3 nascimentos por unidade de tempo.
+  \end{block}
+
+\end{frame}
+
+% ──────────────────────────────────────────────────
+\begin{frame}{Hipótese 2 — Taxas per capita constantes}
+
+  \begin{exampleblock}{Hipótese explícita}
+    Assumimos que $b$ e $d$ são constantes ---
+    não dependem de $N$, do tempo, nem do ambiente.
+  \end{exampleblock}
+
+  \bigskip
+  Substituindo $B = bN$ e $D = dN$ em $\Delta N = B - D$:
+
+  \[
+    \frac{dN}{dt} = bN - dN = (b - d)\,N
+  \]
+
+  \bigskip
+  Definindo $r = b - d$ como a \textbf{taxa intrínseca de crescimento}:
+
+  \[
+    \boxed{\frac{dN}{dt} = rN}
+  \]
+
+\end{frame}
+
+% ──────────────────────────────────────────────────
+\begin{frame}{O que $r$ significa?}
+
+  \begin{itemize}
+    \item $r > 0$ \quad natalidade supera mortalidade
+      --- população \textbf{cresce}
+    \bigskip
+    \item $r = 0$ \quad natalidade igual à mortalidade
+      --- população \textbf{estável}
+    \bigskip
+    \item $r < 0$ \quad mortalidade supera natalidade
+      --- população \textbf{declina}
+  \end{itemize}
+
+  \bigskip
+  \begin{alertblock}{Pergunta}
+    Uma população pode crescer indefinidamente?
+    Essa hipótese é razoável na natureza?
+  \end{alertblock}
+
+\end{frame}
+
+% ══════════════════════════════════════════════════
+\section{Bloco 4 — Quebrando a hipótese}
+% ══════════════════════════════════════════════════
+
+\begin{frame}{Quando a hipótese falha?}
+
+  A hipótese de taxas per capita constantes implica
+  crescimento ilimitado. Mas observamos na natureza:
+
+  \bigskip
+  \begin{itemize}
+    \item Populações que crescem rápido quando pequenas
+      e desaceleram quando grandes
+    \item Populações que se estabilizam em torno de
+      um tamanho típico para o ambiente
+    \item Populações que colapsam quando superam
+      a capacidade do ambiente
+  \end{itemize}
+
+  \bigskip
+  \begin{alertblock}{Pergunta}
+    O que biologicamente explica essa desaceleração?
+  \end{alertblock}
+
+\end{frame}
+
+% ──────────────────────────────────────────────────
+\begin{frame}{Recursos são finitos}
+
+  À medida que $N$ cresce:
+
+  \bigskip
+  \begin{itemize}
+    \item Alimento por indivíduo \textbf{diminui} $\rightarrow$
+      $b$ cai, $d$ sobe
+    \item Espaço por indivíduo \textbf{diminui} $\rightarrow$
+      competição aumenta
+    \item Predação e doenças se tornam \textbf{mais frequentes}
+      $\rightarrow$ mortalidade sobe
+  \end{itemize}
+
+  \bigskip
+  \begin{exampleblock}{Conclusão}
+    As taxas per capita \textbf{não são constantes} ---
+    elas dependem de $N$.
+    A hipótese 2 precisa ser revisada.
+  \end{exampleblock}
+
+\end{frame}
+
+% ──────────────────────────────────────────────────
+\begin{frame}{Hipótese 3 — Dependência de densidade}
+
+  \begin{exampleblock}{Hipótese explícita}
+    As taxas per capita diminuem linearmente com $N$.
+    Existe um tamanho $K$ --- a \textbf{capacidade de suporte} ---
+    no qual o crescimento líquido se anula.
+  \end{exampleblock}
+
+  \bigskip
+  O fator $(1 - N/K)$ captura essa ideia:
+
+  \bigskip
+  \begin{itemize}
+    \item Quando $N \ll K$: \quad $(1 - N/K) \approx 1$
+      --- cresce quase como exponencial
+    \item Quando $N = K/2$: \quad $(1 - N/K) = 1/2$
+      --- crescimento reduzido à metade
+    \item Quando $N = K$: \quad $(1 - N/K) = 0$
+      --- crescimento nulo
+    \item Quando $N > K$: \quad $(1 - N/K) < 0$
+      --- população \textbf{declina}
+  \end{itemize}
+
+\end{frame}
+
+% ──────────────────────────────────────────────────
+\begin{frame}{O segundo modelo}
+
+  Incorporando a dependência de densidade:
+
+  \[
+    \boxed{\frac{dN}{dt} = rN\!\left(1 - \frac{N}{K}\right)}
+  \]
+
+  \bigskip
+  Cada símbolo é uma \textbf{hipótese explícita}:
+
+  \bigskip
+  \begin{itemize}
+    \item $N$ --- abundância (o que queremos explicar)
+    \item $r$ --- taxa intrínseca de crescimento (sem limitação)
+    \item $K$ --- capacidade de suporte (limite imposto pelo ambiente)
+    \item $(1 - N/K)$ --- fração de recursos ainda disponíveis
+  \end{itemize}
+
+\end{frame}
+
+% ══════════════════════════════════════════════════
+\section{Síntese}
+% ══════════════════════════════════════════════════
+
+\begin{frame}{Síntese — Como chegamos até aqui}
+
+  \begin{enumerate}
+    \item \textbf{Identidade contábil} \hfill $\Delta N = B - D + I - E$
+    \bigskip
+    \item \textbf{Hipótese 1: população fechada} \hfill $\Delta N = B - D$
+    \bigskip
+    \item \textbf{Hipótese 2: taxas per capita constantes}
+      \hfill $\dfrac{dN}{dt} = rN$
+    \bigskip
+    \item \textbf{Hipótese 2 falha} \hfill recursos são finitos
+    \bigskip
+    \item \textbf{Hipótese 3: dependência de densidade}
+      \hfill $\dfrac{dN}{dt} = rN\!\left(1 - \dfrac{N}{K}\right)$
+  \end{enumerate}
+
+\end{frame}
+
+% ──────────────────────────────────────────────────
+\begin{frame}{O modelo é um argumento}
+
+  \begin{block}{Para refletir}
+    Cada equação que escrevemos é a consequência de
+    hipóteses explícitas sobre mecanismos biológicos.
+    Mudar uma hipótese muda a equação --- e muda a predição.
+  \end{block}
+
+  \bigskip
+  \begin{exampleblock}{Próxima aula}
+    Com os dois modelos em mãos, vamos analisar seu comportamento:
+    \begin{itemize}
+      \item Quais são os equilíbrios de cada modelo?
+      \item Eles são estáveis ou instáveis?
+      \item O que os dados reais dizem sobre $r$ e $K$?
+    \end{itemize}
+  \end{exampleblock}
+
+\end{frame}
+
+\end{document}

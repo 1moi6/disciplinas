@@ -1,0 +1,24 @@
+/*-- scss:defaults --*/
+/*-- scss:rules --*/
+// royal_purple — púrpura profundo + ouro clássico
+// Régio, elegante; física teórica, matemática pura.
+
+:root {
+  --qp-bg-main:      #12082A;
+  --qp-bg-panel:     #1C1040;
+  --qp-bg-header:    #0D0620;
+  --qp-accent:       #D4AF37;
+  --qp-accent-light: #FFF8DC;
+  --qp-text-h1:      #F0ECFF;
+  --qp-text-h2:      #C4A0F0;
+  --qp-text-body:    #C8BEE8;
+  --qp-text-annot:   #6A508A;
+  --qp-stroke:       #2D1860;
+  --qp-divider:      #200E48;
+  --qp-shadow:       #08050F;
+}
+
+.reveal,
+.reveal .slides section {
+  background-color: var(--qp-bg-main) !important;
+}

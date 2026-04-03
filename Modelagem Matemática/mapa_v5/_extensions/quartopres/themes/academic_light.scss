@@ -1,0 +1,24 @@
+/*-- scss:defaults --*/
+/*-- scss:rules --*/
+// academic_light — branco/cinza + azul profundo
+// Ideal para projetores convencionais e material impresso.
+
+:root {
+  --qp-bg-main:      #F8F9FA;
+  --qp-bg-panel:     #FFFFFF;
+  --qp-bg-header:    #F1F5F9;
+  --qp-accent:       #1A56A8;
+  --qp-accent-light: #EEF4FF;
+  --qp-text-h1:      #0F172A;
+  --qp-text-h2:      #475569;
+  --qp-text-body:    #334155;
+  --qp-text-annot:   #94A3B8;
+  --qp-stroke:       #CBD5E1;
+  --qp-divider:      #E2E8F0;
+  --qp-shadow:       #64748B;
+}
+
+.reveal,
+.reveal .slides section {
+  background-color: var(--qp-bg-main) !important;
+}

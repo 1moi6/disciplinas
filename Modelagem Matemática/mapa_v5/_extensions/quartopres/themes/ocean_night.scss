@@ -1,0 +1,25 @@
+/*-- scss:defaults --*/
+/*-- scss:rules --*/
+// ocean_night — azul marinho profundo + laranja queimado
+// Tema padrão do quartopres (já embutido no quartopres.scss)
+// Inclua este arquivo explicitamente apenas para ser explícito.
+
+:root {
+  --qp-bg-main:      #09192B;
+  --qp-bg-panel:     #0E2440;
+  --qp-bg-header:    #071524;
+  --qp-accent:       #F5831F;
+  --qp-accent-light: #FFF0DF;
+  --qp-text-h1:      #EEF6FF;
+  --qp-text-h2:      #E8A265;
+  --qp-text-body:    #B8D4EC;
+  --qp-text-annot:   #5C8FB5;
+  --qp-stroke:       #1C3D5E;
+  --qp-divider:      #152E48;
+  --qp-shadow:       #04081A;
+}
+
+.reveal,
+.reveal .slides section {
+  background-color: var(--qp-bg-main) !important;
+}

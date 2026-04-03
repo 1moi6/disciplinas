@@ -1,0 +1,24 @@
+/*-- scss:defaults --*/
+/*-- scss:rules --*/
+// arctic — branco-gelo + índigo profundo
+// Limpíssimo, científico; estatística, computação.
+
+:root {
+  --qp-bg-main:      #E8F4FF;
+  --qp-bg-panel:     #F5FAFE;
+  --qp-bg-header:    #D8ECF8;
+  --qp-accent:       #1B3FA8;
+  --qp-accent-light: #EAF0FF;
+  --qp-text-h1:      #0A1E3C;
+  --qp-text-h2:      #2E5C8A;
+  --qp-text-body:    #1A3050;
+  --qp-text-annot:   #6A90B8;
+  --qp-stroke:       #9BBDD8;
+  --qp-divider:      #BCCFE0;
+  --qp-shadow:       #6890B8;
+}
+
+.reveal,
+.reveal .slides section {
+  background-color: var(--qp-bg-main) !important;
+}

@@ -1,0 +1,338 @@
+\documentclass[12pt]{beamer}
+
+\usetheme{Boadilla}
+\usecolortheme{default}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{amsmath, amssymb}
+\usepackage{booktabs}
+
+% Informações
+\title{Por que precisamos de Ecologia?}
+\subtitle{E por que a matemática é sua linguagem natural}
+\author{Modelagem Matemática}
+\institute{Matemática Aplicada}
+\date{Aula 01}
+
+\begin{document}
+
+% ── CAPA ──────────────────────────────────────────
+\begin{frame}
+  \titlepage
+\end{frame}
+
+
+
+% ══════════════════════════════════════════════════
+\section{Um colapso que ninguém previu}
+% ══════════════════════════════════════════════════
+
+\begin{frame}{Um colapso que ninguém previu}
+
+  Em 1989, a população de bacalhau do Atlântico Norte entrou em colapso
+  após \textbf{500 anos} de pesca contínua.
+  Em 1992, o governo canadense decretou \textbf{moratória total}.
+
+  \bigskip
+  Trinta anos depois --- a população \textbf{não se recuperou}.
+
+  \bigskip
+  \begin{block}{Paradoxo}
+    Pescadores, gestores e biólogos observavam o mesmo sistema
+    há gerações. Tinham intuição, experiência e dados de captura.
+    E ainda assim --- não previram, não evitaram, não reverteram.
+  \end{block}
+
+  \bigskip
+  \centering\large\itshape Por quê?
+
+\end{frame}
+
+% ── Slide 1/2: dados do Pantanal — análogo brasileiro ─────────────────────────
+\begin{frame}{O mesmo problema acontece no Brasil}
+
+  \mbox{\footnotesize CPUE — Pantanal MS, 1994--2017 \textbullet{} SCPESCA/MS, Embrapa Pantanal}
+
+  \vspace{3pt}
+  \begin{columns}[T]
+    \begin{column}{0.60\textwidth}
+      \includegraphics[width=\linewidth]{cpue_pantanal.pdf}
+    \end{column}
+    \begin{column}{0.37\textwidth}
+      \textbf{O que os dados mostram:}
+      {\footnotesize
+      \begin{itemize}\setlength\itemsep{3pt}\setlength\parskip{0pt}
+        \item \textbf{Pacu}: CPUE caiu de 14 para 2{,}5\,kg/pescador em 6 anos com esforço crescente
+        \item Após restrição (2000): patamar \textbf{permanentemente inferior}
+        \item \textbf{Pintado} e \textbf{dourado}: declínio contínuo
+      \end{itemize}
+      \vspace{4pt}
+      CPUE é o proxy de abundância do estoque.}
+    \end{column}
+  \end{columns}
+
+\end{frame}
+
+% ── Slide 2/2: confronto bacalhau × Pantanal ──────────────────────────────────
+\begin{frame}{Bacalhau e Pantanal: o mesmo argumento, dois contextos}
+
+  \begin{block}{Padrão comum}
+    {\footnotesize\textbf{(1)} Captura cai com esforço crescente\enspace
+    \textbf{(2)} Dados contínuos não previram o declínio\enspace
+    \textbf{(3)} Linguagem verbal não distingue recuperação de colapso}
+  \end{block}
+
+  \vspace{3pt}
+  \begin{columns}[T]
+    \begin{column}{0.47\textwidth}
+      \begin{exampleblock}{Bacalhau — Atlântico N.}
+        {\footnotesize
+        \begin{itemize}\setlength\itemsep{0pt}\setlength\parskip{0pt}
+          \item 500 anos de pesca contínua
+          \item Colapso 1989, moratória 1992
+          \item Não se recuperou em 30 anos
+        \end{itemize}}
+      \end{exampleblock}
+    \end{column}
+    \begin{column}{0.47\textwidth}
+      \begin{exampleblock}{Pescados — Pantanal MS}
+        {\footnotesize
+        \begin{itemize}\setlength\itemsep{0pt}\setlength\parskip{0pt}
+          \item 23 anos de dados (SCPESCA)
+          \item Declínio detectado; restrições aplicadas
+          \item Recuperação parcial e lenta
+        \end{itemize}}
+      \end{exampleblock}
+    \end{column}
+  \end{columns}
+
+  \vspace{3pt}
+  \begin{alertblock}{A pergunta de Krebs, reformulada}
+    {\footnotesize Quais \textbf{interações} entre esforço de pesca,
+    reprodução e abundância determinam \emph{onde} o sistema vai parar?}
+  \end{alertblock}
+
+\end{frame}
+
+% ══════════════════════════════════════════════════
+\section{O limite da intuição verbal}
+% ══════════════════════════════════════════════════
+
+\begin{frame}{O limite da intuição verbal}
+
+  Considere estas afirmações --- todas razoáveis, todas verbais:
+
+  \bigskip
+  \begin{enumerate}
+    \item ``Se pescamos menos, o estoque se recupera.''
+    \item ``A população é resiliente --- sempre se recuperou antes.''
+    \item ``O ambiente mudou, por isso não volta.''
+  \end{enumerate}
+
+  \bigskip
+  \begin{alertblock}{Problema}
+    Todas as três podem ser \textbf{verdadeiras}. Ou \textbf{falsas}.
+    Ou verdadeiras sob certas condições e falsas sob outras.
+    A linguagem verbal não tem como distinguir entre elas:
+    ela não diz \emph{quando}, \emph{por que} nem \emph{sob quais condições}.
+  \end{alertblock}
+
+\end{frame}
+
+% ══════════════════════════════════════════════════
+\section{Por que precisamos de ecologia?}
+% ══════════════════════════════════════════════════
+
+\begin{frame}{Por que precisamos de ecologia?}
+
+  Observação bruta descreve \textbf{padrões}.
+  Ecologia explica \textbf{mecanismos}.
+
+  \bigskip
+  \begin{block}{Observação}
+    \begin{itemize}
+      \item Captura caiu 90\% em 10 anos
+      \item Estoque não volta após moratória
+      \item Temperatura do oceano subiu
+    \end{itemize}
+  \end{block}
+
+  \begin{exampleblock}{Ecologia pergunta}
+    \begin{itemize}
+      \item Quais interações causaram o colapso?
+      \item Existe um ponto sem retorno?
+      \item Como o ambiente altera a dinâmica?
+    \end{itemize}
+  \end{exampleblock}
+
+\end{frame}
+
+% ══════════════════════════════════════════════════
+\section{Conclusão 1 — A pergunta de Krebs}
+% ══════════════════════════════════════════════════
+
+\begin{frame}{Conclusão 1 — A pergunta que organiza tudo}
+
+  Chegamos a uma definição que não é ponto de partida --- é \textbf{resposta}:
+
+  \bigskip
+  \begin{block}{Definição de Krebs (1972)}
+    \itshape
+    ``A ecologia é o estudo científico das \textbf{interações}
+    que \textbf{determinam} a \textbf{distribuição e a abundância}
+    dos organismos.''
+  \end{block}
+
+  \vspace{0.3em}
+  {\small Adotada por Begon, Townsend \& Harper (2006).}
+
+  \bigskip
+  Reformulada como pergunta:
+
+  \bigskip
+  \begin{exampleblock}{A pergunta central}
+    \centering
+    Quais interações determinam \emph{onde} os organismos
+    ocorrem e em \emph{que quantidade}?
+  \end{exampleblock}
+
+\end{frame}
+
+% ── ANATOMIA DA DEFINIÇÃO ─────────────────────────
+\begin{frame}{Três palavras que carregam todo o peso}
+
+  \begin{itemize}
+    \item \textbf{Interações} --- relação de dependência entre variáveis
+      que mudam no tempo
+    \bigskip
+    \item \textbf{Determinam} --- causalidade: não basta descrever,
+      é preciso explicar
+    \bigskip
+    \item \textbf{Distribuição e abundância} --- grandezas mensuráveis:
+      o objeto já é quantitativo
+  \end{itemize}
+
+  \bigskip
+  \begin{exampleblock}{Implicação}
+    A ecologia não matematiza a biologia por opção estética.
+    Seu objeto central --- abundância variável no tempo ---
+    \textbf{já é matemático}.
+  \end{exampleblock}
+
+\end{frame}
+
+% ══════════════════════════════════════════════════
+\section{Por que precisamos de modelos?}
+% ══════════════════════════════════════════════════
+
+\begin{frame}{Por que precisamos de modelos?}
+
+  A pergunta de Krebs exige mais do que observação e descrição qualitativa.
+  Precisamos de um objeto que:
+
+  \bigskip
+  \begin{itemize}
+    \item force \textbf{precisão nas hipóteses}
+    \item gere \textbf{predições testáveis}
+  \end{itemize}
+
+  \bigskip
+  Esse objeto é o \textbf{modelo matemático}.
+
+  \bigskip
+  \begin{alertblock}{Questão}
+    Mas o que construir um modelo, de fato, nos força a fazer?
+  \end{alertblock}
+
+\end{frame}
+
+% ── O QUE O MODELO EXIGE ──────────────────────────
+\begin{frame}{O que construir um modelo nos força a responder}
+
+  \begin{itemize}
+    \item \textbf{A que taxa os indivíduos nascem e morrem?}\\
+      {\small $\rightarrow$ A dinâmica é o mecanismo, não o padrão}
+    \bigskip
+    \item \textbf{Essa taxa depende do tamanho atual da população?}\\
+      {\small $\rightarrow$ Dependência de densidade --- existe um limite}
+    \bigskip
+    \item \textbf{Como a pesca altera essa taxa?}\\
+      {\small $\rightarrow$ A intervenção entra como parâmetro}
+    \bigskip
+    \item \textbf{O sistema tem mais de um equilíbrio?}\\
+      {\small $\rightarrow$ Pode haver um ponto sem retorno}
+  \end{itemize}
+
+\end{frame}
+
+% ══════════════════════════════════════════════════
+\section{Conclusão 2 — A linguagem necessária}
+% ══════════════════════════════════════════════════
+
+\begin{frame}{Conclusão 2 — A linguagem necessária}
+
+  Para responder à pergunta de Krebs, precisamos representar como
+  \textbf{quantidades mudam em função de interações}.
+
+  \bigskip
+  O modelo mais simples possível de uma população:
+
+  \[
+    \frac{dN}{dt} = f(N)
+  \]
+
+  \centering{\small taxa de mudança da abundância $=$ função das interações}
+
+  \bigskip
+  \begin{exampleblock}{Conclusão}
+    A linguagem que representa mudança por interação é o
+    \textbf{cálculo diferencial}. A ecologia chega à matemática
+    não por abstração --- mas por \textbf{necessidade}.
+  \end{exampleblock}
+
+\end{frame}
+
+% ══════════════════════════════════════════════════
+\section{Síntese}
+% ══════════════════════════════════════════════════
+
+\begin{frame}{Síntese — O fio condutor}
+
+  \begin{enumerate}
+    \item \textbf{Problema concreto} \hfill colapso do bacalhau
+    \bigskip
+    \item \textbf{Intuição verbal falha} \hfill precisamos de mecanismo
+    \bigskip
+    \item \textbf{Conclusão 1} \hfill a pergunta de Krebs
+    \bigskip
+    \item \textbf{Descrição qualitativa falha} \hfill precisamos de modelo
+    \bigskip
+    \item \textbf{Conclusão 2} \hfill cálculo diferencial como linguagem
+  \end{enumerate}
+
+\end{frame}
+
+% ── PRÓXIMA AULA ──────────────────────────────────
+\begin{frame}{Próxima aula — Da pergunta ao primeiro modelo}
+
+  Com a linguagem estabelecida, construímos o modelo mais simples
+  que responde à pergunta de Krebs para uma única espécie:
+
+  \[
+    \frac{dN}{dt} = rN\!\left(1 - \frac{N}{K}\right)
+  \]
+
+  Onde cada símbolo é uma \textbf{hipótese explícita} sobre o mecanismo:
+
+  \bigskip
+  \begin{itemize}
+    \item $N$ --- abundância (o que Krebs quer explicar)
+    \item $r$ --- taxa intrínseca de crescimento (interação indivíduo-recurso)
+    \item $K$ --- capacidade de suporte (limite imposto pelo ambiente)
+  \end{itemize}
+
+\end{frame}
+
+\end{document}

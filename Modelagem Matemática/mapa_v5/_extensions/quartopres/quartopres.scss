@@ -1,0 +1,573 @@
+/*-- scss:defaults --*/
+// quartopres.scss — sistema de layouts para apresentações acadêmicas (Quarto revealjs)
+// Baseado na biblioteca mathpres (manim-layouts)
+// Tema padrão: ocean_night
+// Para trocar: adicione themes/<nome>.scss após este arquivo no YAML.
+
+/*-- scss:rules --*/
+
+// ── Design tokens — ocean_night (padrão) ─────────────────────────────────────
+
+:root {
+  // Cores
+  --qp-bg-main: #09192B;
+  --qp-bg-panel: #0E2440;
+  --qp-bg-header: #071524;
+  --qp-accent: #F5831F;
+  --qp-accent-light: #FFF0DF;
+  --qp-text-h1: #EEF6FF;
+  --qp-text-h2: #E8A265;
+  --qp-text-body: #B8D4EC;
+  --qp-text-annot: #5C8FB5;
+  --qp-stroke: #1C3D5E;
+  --qp-divider: #152E48;
+  --qp-shadow: #04081A;
+
+  // ── Escala tipográfica ────────────────────────────────────────────────────
+  // Único ponto de controle: override com uma linha no YAML da apresentação:
+  //   include-in-header:
+  //     text: "<style>:root { --qp-scale: 1.2; }</style>"
+  // Design space: 1600×900 px · Reveal.js escala ~1.15× em tela 1920×1080
+  --qp-scale: 1;
+
+  --qp-font-slide: calc(30px * var(--qp-scale));
+  /* corpo base do slide   */
+  --qp-font-title: calc(42px * var(--qp-scale));
+  /* h2 — título do slide  */
+  --qp-font-panel: calc(30px * var(--qp-scale));
+  /* p, li, td, th         */
+  --qp-font-h3: calc(25px * var(--qp-scale));
+  /* h3, h4 nos painéis    */
+  --qp-font-label: calc(30px * var(--qp-scale));
+  /* .qp-label             */
+  --qp-font-annot: calc(20px * var(--qp-scale));
+  /* .qp-annot             */
+
+  // ── Espaçamento ───────────────────────────────────────────────────────────
+  --qp-gap: calc(10px * var(--qp-scale));
+  --qp-pad-v: calc(14px * var(--qp-scale));
+  --qp-pad-h: calc(20px * var(--qp-scale));
+  --qp-radius: 4px;
+  --qp-accent-w: 5px;
+  --qp-shadow-off: 2px 4px 12px;
+}
+
+
+// ── Globals ───────────────────────────────────────────────────────────────────
+
+.reveal {
+  background-color: var(--qp-bg-main) !important;
+}
+
+// Sobrescreve padding do tema default do Quarto E da margem do Reveal.js
+// (Reveal.js aplica margin:0.04 → 4% de cada lado; Quarto default adiciona padding extra)
+.reveal .slides section,
+.reveal .slides section.present,
+.reveal .slides section.past,
+.reveal .slides section.future {
+  background-color: var(--qp-bg-main);
+  color: var(--qp-text-body);
+  text-align: left;
+  font-size: var(--qp-font-slide) !important;
+  padding: 10px 16px !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+// Sections com grid quartopres: viram flex column para o grid preencher
+// o espaço restante abaixo do título automaticamente.
+.reveal .slides section:has(.qp-1t2b, .qp-2t1b, .qp-2l1r, .qp-1l2r,
+  .qp-full, .qp-narrow-wide, .qp-wide-narrow,
+  .qp-title) {
+  display: flex !important;
+  flex-direction: column;
+  align-items: stretch !important;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3 {
+  text-transform: none;
+  letter-spacing: -0.01em;
+  font-weight: 700;
+  color: var(--qp-text-h1);
+}
+
+// Título do slide — equivalente ao header band do mathpres
+.reveal h2 {
+  font-size: var(--qp-font-title) !important;
+  line-height: 1.2;
+  margin: 0 0 8px 0 !important;
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--qp-accent);
+  color: var(--qp-text-h1);
+}
+
+// MathJax display
+.reveal .MathJax {
+  color: inherit;
+}
+
+
+// ── Panel base ────────────────────────────────────────────────────────────────
+
+.qp-panel {
+  background: var(--qp-bg-panel);
+  border: 1px solid var(--qp-stroke);
+  border-radius: var(--qp-radius);
+  padding: var(--qp-pad-v) var(--qp-pad-h);
+  overflow: auto;
+  box-shadow: var(--qp-shadow-off) var(--qp-shadow);
+
+  p,
+  li,
+  td,
+  th {
+    color: var(--qp-text-body);
+    font-size: var(--qp-font-panel);
+    line-height: 1.45;
+    margin-bottom: 4px;
+  }
+
+  h3,
+  h4 {
+    color: var(--qp-text-h2);
+    font-size: var(--qp-font-h3);
+    font-weight: 600;
+    margin: 0 0 4px;
+    text-transform: none;
+    border: none;
+  }
+
+  ul,
+  ol {
+    margin: 3px 0;
+    padding-left: 22px;
+  }
+
+  strong {
+    color: var(--qp-text-h2);
+  }
+
+  // Fragmentos dentro de painel são display:block para empilhar corretamente
+  .fragment {
+    display: block;
+  }
+}
+
+// Acento lateral — equivalente ao accent=True do mathpres
+.qp-panel.qp-accent {
+  border-left: var(--qp-accent-w) solid var(--qp-accent);
+}
+
+// Painel centrado — equivalente a place_graphic()
+// Use para equações display, figuras, gráficos isolados
+.qp-panel.qp-graphic {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  .MathJax,
+  img,
+  figure {
+    max-width: 100%;
+  }
+}
+
+// Painel sem fundo — só âncora de posicionamento (invisible=True no mathpres)
+.qp-panel.qp-invisible {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+
+// ── Fragmentos revealjs ───────────────────────────────────────────────────────
+// Qualquer .qp-panel pode receber .fragment (e modificadores: .fade-in, .fade-up, etc.)
+// Revealjs gerencia o estado; o CSS abaixo garante transição suave.
+
+.qp-panel.fragment {
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+// Fragmentos filho de painel — aparecem dentro de um painel já visível
+.qp-panel .fragment {
+  display: block;
+}
+
+
+// ── Layout: 1 topo + 2 base  (Grid1T2B) ──────────────────────────────────────
+//
+//  ┌───────────────────────┐
+//  │  .qp-top  (33%)       │
+//  ├───────────┬───────────┤
+//  │  .qp-bl   │  .qp-br   │
+//  │  (67%)    │  (67%)    │
+//  └───────────┴───────────┘
+
+.qp-1t2b {
+  display: grid;
+  grid-template-areas:
+    "top top"
+    "bl  br";
+  grid-template-rows: var(--qp-rows, 33fr 67fr);
+  grid-template-columns: var(--qp-cols, 1fr 1fr);
+  gap: var(--qp-gap);
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  box-sizing: border-box;
+
+  >.qp-top {
+    grid-area: top;
+  }
+
+  >.qp-bl {
+    grid-area: bl;
+  }
+
+  >.qp-br {
+    grid-area: br;
+  }
+}
+
+
+// ── Layout: 2 topo + 1 base  (Grid2T1B) ──────────────────────────────────────
+//
+//  ┌───────────┬───────────┐
+//  │  .qp-tl   │  .qp-tr   │
+//  ├───────────┴───────────┤
+//  │  .qp-bot  (50%)       │
+//  └───────────────────────┘
+
+.qp-2t1b {
+  display: grid;
+  grid-template-areas:
+    "tl tr"
+    "bot bot";
+  grid-template-rows: var(--qp-rows, 1fr 1fr);
+  grid-template-columns: var(--qp-cols, 1fr 1fr);
+  gap: var(--qp-gap);
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  box-sizing: border-box;
+
+  >.qp-tl {
+    grid-area: tl;
+  }
+
+  >.qp-tr {
+    grid-area: tr;
+  }
+
+  >.qp-bot {
+    grid-area: bot;
+  }
+}
+
+
+// ── Layout: 2 esquerda + 1 direita  (Grid2L1R) ───────────────────────────────
+//
+//  ┌───────────┬───────────┐
+//  │  .qp-lt   │           │
+//  ├───────────┤  .qp-r    │
+//  │  .qp-lb   │           │
+//  └───────────┴───────────┘
+
+.qp-2l1r {
+  display: grid;
+  grid-template-areas:
+    "lt r"
+    "lb r";
+  grid-template-rows: var(--qp-rows, 1fr 1fr);
+  grid-template-columns: var(--qp-cols, 1fr 1fr);
+  gap: var(--qp-gap);
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  box-sizing: border-box;
+
+  >.qp-lt {
+    grid-area: lt;
+  }
+
+  >.qp-lb {
+    grid-area: lb;
+  }
+
+  >.qp-r {
+    grid-area: r;
+  }
+}
+
+
+// ── Layout: 1 esquerda + 2 direita  (Grid1L2R) ───────────────────────────────
+//
+//  ┌───────────┬───────────┐
+//  │           │  .qp-rt   │
+//  │  .qp-l    ├───────────┤
+//  │           │  .qp-rb   │
+//  └───────────┴───────────┘
+
+.qp-1l2r {
+  display: grid;
+  grid-template-areas:
+    "l rt"
+    "l rb";
+  grid-template-rows: var(--qp-rows, 1fr 1fr);
+  grid-template-columns: var(--qp-cols, 1fr 1fr);
+  gap: var(--qp-gap);
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  box-sizing: border-box;
+
+  >.qp-l {
+    grid-area: l;
+  }
+
+  >.qp-rt {
+    grid-area: rt;
+  }
+
+  >.qp-rb {
+    grid-area: rb;
+  }
+}
+
+
+// ── Layout: painel único full-width ──────────────────────────────────────────
+//
+//  ┌───────────────────────┐
+//  │  .qp-main             │
+//  └───────────────────────┘
+
+.qp-full {
+  display: grid;
+  grid-template-areas: "main";
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  box-sizing: border-box;
+
+  >.qp-main {
+    grid-area: main;
+  }
+}
+
+
+// ── Layout assimétrico: coluna estreita (33%) + larga (67%) ──────────────────
+// Equivalente aos layouts F1/F2/F3 do mathpres
+
+.qp-narrow-wide {
+  display: grid;
+  grid-template-areas: "narrow wide";
+  grid-template-columns: var(--qp-cols, 33fr 67fr);
+  gap: var(--qp-gap);
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  box-sizing: border-box;
+
+  >.qp-narrow {
+    grid-area: narrow;
+  }
+
+  >.qp-wide {
+    grid-area: wide;
+  }
+}
+
+.qp-wide-narrow {
+  display: grid;
+  grid-template-areas: "wide narrow";
+  grid-template-columns: var(--qp-cols, 67fr 33fr);
+  gap: var(--qp-gap);
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  box-sizing: border-box;
+
+  >.qp-wide {
+    grid-area: wide;
+  }
+
+  >.qp-narrow {
+    grid-area: narrow;
+  }
+}
+
+
+// ── Layout: slide de abertura  (.qp-title) ───────────────────────────────────
+//
+//  ┌────────┬──────────────────────────────┐
+//  │ stripe │  context (topo)              │
+//  │  20%   │  título principal (centro)   │
+//  │        │  footer (base)               │
+//  └────────┴──────────────────────────────┘
+//
+//  Uso no .qmd:
+//
+//  ## {.no-header}
+//
+//  :::: {.qp-title}
+//  ::: {.qp-title-stripe}
+//  Nome da Disciplina
+//  :::
+//  ::: {.qp-title-body}
+//  [Contexto · Ano]{.qp-title-context}
+//  [Título Principal]{.qp-title-main}
+//  [Subtítulo ou descrição da apresentação]{.qp-title-sub}
+//  [Autor · Instituição · Data]{.qp-title-footer}
+//  :::
+//  ::::
+
+.qp-title {
+  display: grid;
+  grid-template-columns: 18fr 82fr;
+  grid-template-rows: 1fr;
+  gap: 0;
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.qp-title-stripe {
+  background: var(--qp-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: calc(20px * var(--qp-scale));
+  box-sizing: border-box;
+  border-radius: var(--qp-radius) 0 0 var(--qp-radius);
+
+  // Texto vertical rotacionado
+  p,
+  span {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    font-size: calc(var(--qp-font-annot) * 1.2);
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--qp-bg-main);
+    opacity: 0.85;
+    white-space: nowrap;
+    margin: 0;
+  }
+}
+
+.qp-title-body {
+  background: var(--qp-bg-panel);
+  border: 1px solid var(--qp-stroke);
+  border-left: none;
+  border-radius: 0 var(--qp-radius) var(--qp-radius) 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: calc(var(--qp-pad-v) * 2.5) calc(var(--qp-pad-h) * 2);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.qp-title-context {
+  font-size: calc(var(--qp-font-label) * 0.85);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--qp-accent);
+  margin-bottom: calc(var(--qp-gap) * 2);
+  display: block;
+}
+
+.qp-title-main {
+  font-size: calc(var(--qp-font-title) * 1.6);
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--qp-text-h1);
+  margin: 0;
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.qp-title-sub {
+  font-size: calc(var(--qp-font-panel) * 1.2);
+  color: var(--qp-text-annot);
+  line-height: 1.5;
+  margin-top: calc(var(--qp-gap) * 1.5);
+  display: block;
+}
+
+.qp-title-footer {
+  border-top: 1px solid var(--qp-divider);
+  padding-top: calc(var(--qp-pad-v) * 0.8);
+  margin-top: calc(var(--qp-gap) * 2);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  font-size: calc(var(--qp-font-annot) * 1.0);
+  color: var(--qp-text-annot);
+  letter-spacing: 0.04em;
+
+  p,
+  span {
+    margin: 0;
+    color: inherit;
+    font-size: inherit;
+  }
+}
+
+
+// ── Coexistência com colunas nativas do Quarto ────────────────────────────────
+// .columns / .column usam flexbox — não conflitam com o CSS Grid do quartopres.
+// Podem ser usados livremente dentro de qualquer .qp-panel.
+
+.qp-panel .columns {
+  display: flex !important;
+  gap: 1em;
+  align-items: flex-start;
+}
+
+.qp-panel .column {
+  flex: 1;
+  min-width: 0;
+}
+
+
+// ── Utilitários ───────────────────────────────────────────────────────────────
+
+// Texto de anotação (C_TEXT_ANNOT do mathpres)
+.qp-annot {
+  color: var(--qp-text-annot);
+  font-size: var(--qp-font-annot);
+  font-style: italic;
+  line-height: 1.35;
+}
+
+// Rótulo de painel (C_TEXT_H2 do mathpres)
+.qp-label {
+  color: var(--qp-text-h2);
+  font-size: var(--qp-font-label);
+  font-weight: 600;
+  margin-bottom: 4px;
+  display: block;
+}
+
+// Destaque com cor de acento
+.qp-hl {
+  color: var(--qp-accent);
+  font-weight: 600;
+}
+
+// Linha divisória interna
+.qp-divider {
+  border: none;
+  border-top: 1px solid var(--qp-divider);
+  margin: 0.6em 0;
+}

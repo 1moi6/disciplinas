@@ -1,0 +1,24 @@
+/*-- scss:defaults --*/
+/*-- scss:rules --*/
+// warm_paper — pergaminho/creme + terracota
+// Evoca livros clássicos; história, humanidades, economia.
+
+:root {
+  --qp-bg-main:      #F5ECD7;
+  --qp-bg-panel:     #FFFCF5;
+  --qp-bg-header:    #EDE0C4;
+  --qp-accent:       #B83A0E;
+  --qp-accent-light: #FFF0E8;
+  --qp-text-h1:      #2A1505;
+  --qp-text-h2:      #7A4E2A;
+  --qp-text-body:    #3C2A1A;
+  --qp-text-annot:   #9C8470;
+  --qp-stroke:       #D4C4A8;
+  --qp-divider:      #E0D0B4;
+  --qp-shadow:       #8A7055;
+}
+
+.reveal,
+.reveal .slides section {
+  background-color: var(--qp-bg-main) !important;
+}

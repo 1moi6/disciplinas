@@ -1,0 +1,24 @@
+/*-- scss:defaults --*/
+/*-- scss:rules --*/
+// sunset_dusk — marrom-escuro quente + coral vivo
+// Dramático, quente; engenharia, apresentações de impacto.
+
+:root {
+  --qp-bg-main:      #1A0F0A;
+  --qp-bg-panel:     #261510;
+  --qp-bg-header:    #120A06;
+  --qp-accent:       #FF6B35;
+  --qp-accent-light: #FFF0E8;
+  --qp-text-h1:      #FFF3EC;
+  --qp-text-h2:      #FFB347;
+  --qp-text-body:    #E8C9B0;
+  --qp-text-annot:   #8A6050;
+  --qp-stroke:       #3D2015;
+  --qp-divider:      #2E1A0F;
+  --qp-shadow:       #060304;
+}
+
+.reveal,
+.reveal .slides section {
+  background-color: var(--qp-bg-main) !important;
+}

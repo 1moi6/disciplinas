@@ -1,0 +1,635 @@
+---
+title: "Mapa de Áreas — Modelagem Matemática Aplicada"
+format:
+  revealjs:
+    theme:
+      - default
+      - _extensions/quartopres/quartopres.scss
+      - _extensions/quartopres/themes/carbon_teal.scss
+    slide-number: true
+    progress: false
+    hash: true
+    center: false
+    mathjax: true
+    width: 1600
+    height: 900
+    margin: 0.04
+    include-in-header:
+      text: |
+        <style>
+        :root { --qp-scale: 1.0; }
+
+        /* ── layout custom: grade 2×2 ── */
+        .qp-2x2 {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          grid-template-rows: 1fr 1fr;
+          gap: calc(var(--qp-gap, 10px) * var(--qp-scale, 1));
+          flex: 1;
+          width: 100%;
+          min-height: 0;
+          box-sizing: border-box;
+        }
+
+        /* ── layout custom: grade 2×1 ── */
+        .qp-2x1 {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          grid-template-rows: 1fr;
+          gap: calc(var(--qp-gap, 10px) * var(--qp-scale, 1));
+          flex: 1;
+          width: 100%;
+          min-height: 0;
+          box-sizing: border-box;
+        }
+
+        /* overrides de layout do quartopres */
+        .reveal .slides section,
+        .reveal .slides section.present {
+          padding: 10px 16px !important;
+          box-sizing: border-box !important;
+          max-width: 100% !important;
+        }
+        .reveal .slides section:has(.qp-1t2b,.qp-2t1b,.qp-2l1r,.qp-1l2r,.qp-full,.qp-narrow-wide,.qp-wide-narrow,.qp-2x2,.qp-2x1,.qp-title) {
+          display: flex !important;
+          flex-direction: column !important;
+          align-items: stretch !important;
+        }
+        .qp-1t2b, .qp-2t1b, .qp-2l1r, .qp-1l2r,
+        .qp-full, .qp-narrow-wide, .qp-wide-narrow,
+        .qp-2x2, .qp-2x1 {
+          flex: 1 !important;
+          width: 100% !important;
+          min-height: 0 !important;
+          box-sizing: border-box !important;
+        }
+
+        /* suprimir h2 no slide de abertura */
+        .reveal .slides section .no-header h2 { display: none !important; }
+        </style>
+---
+
+## {.no-header}
+
+:::: {.qp-title}
+::: {.qp-title-stripe}
+Modelagem Matemática e Matemática Aplicada
+:::
+::: {.qp-title-body}
+[Disciplina de Modelagem Matemática · 2025]{.qp-title-context}
+
+[Mapa de Áreas Para Projetos]{.qp-title-main}
+
+[Panorama de domínios, subáreas e temas para proposição de projetos de graduação]{.qp-title-sub}
+
+[8 domínios · 47 subáreas · 140+ temas · Ecologia · Saúde · Finanças · Engenharia · Tecnologia · Ciências Sociais · Agronomia · Energia]{.qp-title-footer}
+:::
+::::
+
+---
+
+## Áreas cobertas
+
+:::: {.qp-2x2}
+
+::: {.qp-panel .qp-accent}
+[Domínios — parte I]{.qp-label}
+
+1. Ecologia e Meio Ambiente
+2. Saúde e Epidemiologia
+3. Finanças e Economia
+4. Engenharia e Física Aplicada
+:::
+
+::: {.qp-panel .qp-accent}
+[Domínios — parte II]{.qp-label}
+
+5. Tecnologia e Ciência da Computação
+6. Ciências Sociais e Comportamento Humano
+7. Agronomia e Ciências do Solo
+8. Energia
+:::
+
+::: {.qp-panel .qp-accent}
+[Princípio orientador]{.qp-label}
+
+Cada área é um campo do mundo real. As subdivisões são recortes temáticos — não ferramentas matemáticas.
+
+A matemática aparece como instrumento, não como ponto de partida.
+:::
+
+::: {.qp-panel .qp-accent}
+[Como usar este mapa]{.qp-label}
+
+1. Escolher uma área temática de interesse
+2. Navegar pelas subáreas para identificar o fenômeno
+3. Selecionar abordagem de modelagem adequada ao nível da turma
+4. Verificar disponibilidade de dados brasileiros
+:::
+
+::::
+
+---
+
+## Área 1 — Ecologia e Meio Ambiente (I)
+
+:::: {.qp-2x2}
+
+::: {.qp-panel .qp-accent}
+[1.1 Dinâmica de Populações]{.qp-label}
+
+- Crescimento e colapso de estoques pesqueiros
+- Manejo de espécies invasoras
+- Extinção local e mínima população viável
+:::
+
+::: {.qp-panel .qp-accent}
+[1.2 Comunidades e Cadeias Tróficas]{.qp-label}
+
+- Dinâmica predador-presa
+- Competição interespecífica e coexistência
+- Cascatas tróficas e espécies-chave
+:::
+
+::: {.qp-panel .qp-accent}
+[1.3 Ecossistemas e Ciclos Biogeoquímicos]{.qp-label}
+
+- Ciclagem de carbono e nitrogênio
+- Produtividade primária
+- Eutrofização de corpos d'água
+:::
+
+::: {.qp-panel .qp-accent}
+[1.4 Mudanças Climáticas e Clima]{.qp-label}
+
+- Tendências em séries temporais climáticas
+- Modelos de balanço de energia
+- Eventos extremos (seca, cheia, onda de calor)
+:::
+
+::::
+
+---
+
+## Área 1 — Ecologia e Meio Ambiente (II)
+
+:::: {.qp-2x1}
+
+::: {.qp-panel .qp-accent}
+[1.5 Uso do Solo e Desmatamento]{.qp-label}
+
+- Modelagem de fragmentação florestal
+- Dinâmica de fronteiras agrícolas
+- Recuperação de áreas degradadas
+:::
+
+::: {.qp-panel .qp-accent}
+[1.6 Recursos Hídricos]{.qp-label}
+
+- Balanço hídrico em bacias hidrográficas
+- Qualidade da água e carga de poluentes
+- Dinâmica de aquíferos
+:::
+
+::::
+
+---
+
+## Área 2 — Saúde e Epidemiologia (I)
+
+:::: {.qp-2x2}
+
+::: {.qp-panel .qp-accent}
+[2.1 Doenças Infecciosas]{.qp-label}
+
+- Transmissão de doenças endêmicas (dengue, malária, leishmaniose)
+- Pandemias e estratégias de controle
+- Resistência antimicrobiana
+:::
+
+::: {.qp-panel .qp-accent}
+[2.2 Vacinação e Intervenções]{.qp-label}
+
+- Imunidade de rebanho e cobertura vacinal
+- Impacto de campanhas de vacinação
+- Hesitância vacinal e dinâmica social
+:::
+
+::: {.qp-panel .qp-accent}
+[2.3 Sistemas de Saúde e Filas]{.qp-label}
+
+- Dimensionamento de leitos e UTIs
+- Fluxo de pacientes em pronto-socorro
+- Otimização de escalas e recursos hospitalares
+:::
+
+::: {.qp-panel .qp-accent}
+[2.4 Epidemiologia Espacial]{.qp-label}
+
+- Distribuição geográfica de doenças
+- Fatores socioeconômicos e mortalidade
+- Vigilância epidemiológica e detecção de surtos
+:::
+
+::::
+
+---
+
+## Área 2 — Saúde e Epidemiologia (II)
+
+:::: {.qp-2x1}
+
+::: {.qp-panel .qp-accent}
+[2.5 Farmacocinética e Farmacodinâmica]{.qp-label}
+
+- Modelos de absorção e eliminação de fármacos
+- Janela terapêutica e dosagem
+- Resistência a tratamentos
+:::
+
+::: {.qp-panel .qp-accent}
+[2.6 Saúde Mental e Comportamento]{.qp-label}
+
+- Modelos de difusão de comportamentos de risco
+- Dependência química (modelos de recaída)
+- Impacto de intervenções psicossociais
+:::
+
+::::
+
+---
+
+## Área 3 — Finanças e Economia (I)
+
+:::: {.qp-2x2}
+
+::: {.qp-panel .qp-accent}
+[3.1 Mercados Financeiros]{.qp-label}
+
+- Precificação de ativos (ações, opções, derivativos)
+- Volatilidade e risco de mercado
+- Estratégias de investimento e portfólio
+:::
+
+::: {.qp-panel .qp-accent}
+[3.2 Risco e Seguros]{.qp-label}
+
+- Modelos de risco de crédito
+- Precificação de seguros (atuária)
+- Risco sistêmico e contágio financeiro
+:::
+
+::: {.qp-panel .qp-accent}
+[3.3 Macroeconomia e Crescimento]{.qp-label}
+
+- Modelos de crescimento econômico (Solow, Ramsey)
+- Ciclos econômicos e flutuações
+- Política fiscal e monetária
+:::
+
+::: {.qp-panel .qp-accent}
+[3.4 Microeconomia e Decisão]{.qp-label}
+
+- Teoria dos jogos (equilíbrios, dilemas)
+- Teoria do consumidor e da firma
+- Leilões e mecanismos de alocação
+:::
+
+::::
+
+---
+
+## Área 3 — Finanças e Economia (II)
+
+:::: {.qp-2x1}
+
+::: {.qp-panel .qp-accent}
+[3.5 Logística e Cadeias de Suprimento]{.qp-label}
+
+- Roteirização e problema do caixeiro-viajante
+- Gestão de estoques e demanda incerta
+- Otimização de redes de distribuição
+:::
+
+::: {.qp-panel .qp-accent}
+[3.6 Economia Ambiental]{.qp-label}
+
+- Valoração de serviços ecossistêmicos
+- Modelos de externalidades e impostos ambientais
+- Mercados de carbono
+:::
+
+::::
+
+---
+
+## Área 4 — Engenharia e Física Aplicada (I)
+
+:::: {.qp-2x2}
+
+::: {.qp-panel .qp-accent}
+[4.1 Mecânica e Vibrações]{.qp-label}
+
+- Osciladores (pêndulo, mola-massa, ressonância)
+- Análise modal de estruturas
+- Controle de vibrações
+:::
+
+::: {.qp-panel .qp-accent}
+[4.2 Transferência de Calor e Massa]{.qp-label}
+
+- Condução, convecção e radiação
+- Trocadores de calor
+- Secagem e processos industriais
+:::
+
+::: {.qp-panel .qp-accent}
+[4.3 Mecânica dos Fluidos]{.qp-label}
+
+- Escoamento em tubulações e redes
+- Dinâmica de fluidos computacional (introdutória)
+- Sedimentação e transporte de partículas
+:::
+
+::: {.qp-panel .qp-accent}
+[4.4 Controle e Sistemas Dinâmicos]{.qp-label}
+
+- Controle PID e realimentação
+- Estabilidade de sistemas de controle
+- Controle ótimo e robusto
+:::
+
+::::
+
+---
+
+## Área 4 — Engenharia e Física Aplicada (II)
+
+:::: {.qp-2x1}
+
+::: {.qp-panel .qp-accent}
+[4.5 Eletricidade e Magnetismo]{.qp-label}
+
+- Circuitos elétricos como sistemas dinâmicos
+- Distribuição de energia em redes elétricas
+- Modelos de campo eletromagnético
+:::
+
+::: {.qp-panel .qp-accent}
+[4.6 Materiais e Processos]{.qp-label}
+
+- Difusão em sólidos (ligas, dopagem)
+- Crescimento de cristais e solidificação
+- Fadiga e fratura de materiais
+:::
+
+::::
+
+---
+
+## Área 5 — Tecnologia e Ciência da Computação (I)
+
+:::: {.qp-2x2}
+
+::: {.qp-panel .qp-accent}
+[5.1 Redes e Grafos]{.qp-label}
+
+- PageRank e algoritmos de busca
+- Detecção de comunidades em redes sociais
+- Redes de transporte e conectividade
+:::
+
+::: {.qp-panel .qp-accent}
+[5.2 Compressão e Processamento de Sinais]{.qp-label}
+
+- Compressão de imagens (SVD, DCT/JPEG)
+- Compressão de áudio (FFT, Wavelets/MP3)
+- Filtragem de ruído e restauração de sinais
+:::
+
+::: {.qp-panel .qp-accent}
+[5.3 Criptografia e Segurança]{.qp-label}
+
+- Criptografia de chave pública (RSA, Diffie-Hellman)
+- Curvas elípticas em criptografia
+- Funções de hash e integridade de dados
+:::
+
+::: {.qp-panel .qp-accent}
+[5.4 Aprendizado de Máquina — Fundamentos]{.qp-label}
+
+- Regressão e classificação como problema de otimização
+- Redes neurais e retropropagação
+- Agrupamento e redução de dimensionalidade
+:::
+
+::::
+
+---
+
+## Área 5 — Tecnologia e Ciência da Computação (II)
+
+:::: {.qp-2x2}
+
+::: {.qp-panel .qp-accent}
+[5.4 Redes Neurais — Arquiteturas Base]{.qp-label}
+
+- Perceptron multicamada (MLP) e retropropagação
+- Funções de ativação (ReLU, sigmoid, tanh, GELU)
+- Inicialização, normalização (BatchNorm, LayerNorm)
+- Redes profundas e o problema do gradiente desvanecente
+:::
+
+::: {.qp-panel .qp-accent}
+[5.4 Redes Neurais — Arquiteturas Especializadas]{.qp-label}
+
+- Convolucionais (CNN) — imagens, sinais 1D, séries temporais
+- Recorrentes (RNN, LSTM, GRU) — sequências e texto
+- Transformers e atenção — fundamento de LLMs e visão
+- Graph Neural Networks (GNN) — grafos
+- Autoencoders e VAE — compressão, geração, anomalias
+- GANs — geração de imagens, dados sintéticos
+:::
+
+::: {.qp-panel .qp-accent}
+[5.4 Modelos de Linguagem (LLMs)]{.qp-label}
+
+- Tokenização e embeddings (Word2Vec, GloVe, BPE)
+- Arquitetura Transformer (atenção multi-cabeça)
+- Pré-treinamento e fine-tuning (BERT, GPT, T5)
+- RLHF e alinhamento de modelos
+- Aplicações: classificação, resumo, tradução, geração
+:::
+
+::: {.qp-panel .qp-accent}
+[5.4 Modelos para Imagens e Aprendizado por Reforço]{.qp-label}
+
+- Classificação e detecção de objetos (YOLO, ResNet)
+- Segmentação semântica e de instâncias
+- Modelos de difusão (DDPM) — fundamentos matemáticos
+- Vision Transformers (ViT)
+- MDP, Q-learning, Deep Q-Networks (DQN)
+- Policy gradient (REINFORCE, PPO)
+:::
+
+::::
+
+---
+
+## Área 5 — Tecnologia e Ciência da Computação (III)
+
+:::: {.qp-2x1}
+
+::: {.qp-panel .qp-accent}
+[5.5 Simulação Computacional]{.qp-label}
+
+- Simulação de eventos discretos
+- Monte Carlo e amostragem
+- Autômatos celulares e modelos baseados em agentes
+:::
+
+::: {.qp-panel .qp-accent}
+[5.6 Banco de Dados e Recuperação de Informação]{.qp-label}
+
+- Álgebra relacional e consultas
+- Indexação e busca semântica (LSA/SVD)
+- Sistemas de recomendação
+:::
+
+::::
+
+---
+
+## Área 6 — Ciências Sociais e Comportamento Humano
+
+:::: {.qp-2x2}
+
+::: {.qp-panel .qp-accent}
+[6.1 Dinâmica Social e Opinião]{.qp-label}
+
+- Formação e polarização de opiniões
+- Difusão de inovações e comportamentos
+- Modelos de influência em redes sociais
+:::
+
+::: {.qp-panel .qp-accent}
+[6.2 Urbanismo e Mobilidade]{.qp-label}
+
+- Fluxos populacionais e migrações
+- Mobilidade urbana e transporte público
+- Expansão urbana e uso do solo
+:::
+
+::: {.qp-panel .qp-accent}
+[6.3 Educação e Aprendizagem]{.qp-label}
+
+- Modelos de retenção e esquecimento (curva de Ebbinghaus)
+- Desempenho acadêmico e fatores associados
+- Otimização de currículos e alocação de recursos
+:::
+
+::: {.qp-panel .qp-accent}
+[6.4 Criminologia e Segurança Pública]{.qp-label}
+
+- Distribuição espacial de crimes
+- Modelos de dissuasão e patrulhamento
+- Reincidência e políticas de reabilitação
+:::
+
+::::
+
+---
+
+## Área 6 - Parte II &  Área 7 — Agronomia (I)
+
+:::: {.qp-2x2}
+
+::: {.qp-panel .qp-accent}
+[6.5 Política e Eleições]{.qp-label}
+
+- Modelos de votação e sistemas eleitorais
+- Gerrymandering e representatividade
+- Dinâmica de campanha e persuasão
+:::
+
+::: {.qp-panel .qp-accent}
+[7.1 Produção Agrícola]{.qp-label}
+
+- Modelos de crescimento de culturas
+- Otimização de irrigação e fertilização
+- Previsão de safras
+:::
+
+::: {.qp-panel .qp-accent}
+[7.2 Solo e Erosão]{.qp-label}
+
+- Dinâmica de matéria orgânica no solo
+- Erosão hídrica e eólica
+- Salinização e degradação
+:::
+
+::: {.qp-panel .qp-accent}
+[7.3 Pragas e Controle Biológico]{.qp-label}
+
+- Dinâmica de pragas agrícolas
+- Controle biológico (predadores e parasitoides)
+- Resistência a pesticidas
+:::
+
+::::
+
+---
+
+## Área 7 - Parte II  &  Área 8 — Energia
+
+:::: {.qp-2x2}
+
+::: {.qp-panel .qp-accent}
+[7.4 Agropecuária e Manejo]{.qp-label}
+
+- Modelos de crescimento animal
+- Otimização de pastagens
+- Rastreabilidade e cadeia produtiva
+:::
+
+::: {.qp-panel .qp-accent}
+[8.1 Fontes Renováveis]{.qp-label}
+
+- Modelagem de geração solar (irradiância, eficiência)
+- Geração eólica e variabilidade
+- Potencial hidrelétrico em bacias
+:::
+
+::: {.qp-panel .qp-accent}
+[8.2 Redes Elétricas]{.qp-label}
+
+- Fluxo de potência em redes (load flow)
+- Estabilidade de sistemas elétricos
+- Integração de fontes intermitentes
+:::
+
+::: {.qp-panel .qp-accent}
+[8.3 Eficiência Energética]{.qp-label}
+
+- Modelagem de consumo predial
+- Otimização de processos industriais
+- Gestão de demanda
+:::
+
+::::
+
+---
+
+## Área 8 — Energia (II)
+
+:::: {.qp-full}
+
+::: {.qp-panel .qp-main .qp-accent}
+[8.4 Combustíveis e Transição Energética]{.qp-label}
+
+- Dinâmica de mercados de combustíveis
+- Modelos de transição para baixo carbono
+- Biocombustíveis e balanço energético
+:::
+
+::::

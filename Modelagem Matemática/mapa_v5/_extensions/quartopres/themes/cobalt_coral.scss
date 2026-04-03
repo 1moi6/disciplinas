@@ -1,0 +1,24 @@
+/*-- scss:defaults --*/
+/*-- scss:rules --*/
+// cobalt_coral — azul cobalto + coral/salmão
+// Vivaz, contemporâneo; data science, visualizações.
+
+:root {
+  --qp-bg-main:      #0A1628;
+  --qp-bg-panel:     #112240;
+  --qp-bg-header:    #070F1E;
+  --qp-accent:       #FF5F6D;
+  --qp-accent-light: #FFE8EA;
+  --qp-text-h1:      #F0F7FF;
+  --qp-text-h2:      #FF9EA5;
+  --qp-text-body:    #B0CEEE;
+  --qp-text-annot:   #4E7A9E;
+  --qp-stroke:       #1A3860;
+  --qp-divider:      #122B4A;
+  --qp-shadow:       #03060F;
+}
+
+.reveal,
+.reveal .slides section {
+  background-color: var(--qp-bg-main) !important;
+}

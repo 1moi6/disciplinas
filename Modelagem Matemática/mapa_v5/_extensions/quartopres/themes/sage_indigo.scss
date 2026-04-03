@@ -1,0 +1,24 @@
+/*-- scss:defaults --*/
+/*-- scss:rules --*/
+// sage_indigo — verde-sálvia suave + índigo/violeta
+// Sereno, refinado; química, farmácia, ciências ambientais.
+
+:root {
+  --qp-bg-main:      #F2F5F0;
+  --qp-bg-panel:     #FAFCF8;
+  --qp-bg-header:    #E4ECE0;
+  --qp-accent:       #3D2FA8;
+  --qp-accent-light: #EEEAFF;
+  --qp-text-h1:      #1A2010;
+  --qp-text-h2:      #3A5C2A;
+  --qp-text-body:    #2A3C22;
+  --qp-text-annot:   #7A9870;
+  --qp-stroke:       #C0D0B8;
+  --qp-divider:      #D0DCCA;
+  --qp-shadow:       #809080;
+}
+
+.reveal,
+.reveal .slides section {
+  background-color: var(--qp-bg-main) !important;
+}

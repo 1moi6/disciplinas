@@ -1,0 +1,24 @@
+/*-- scss:defaults --*/
+/*-- scss:rules --*/
+// carbon_teal — carvão quase-preto + ciano/verde-água
+// Visual tech-forward; computação, data science.
+
+:root {
+  --qp-bg-main:      #0E1117;
+  --qp-bg-panel:     #161D27;
+  --qp-bg-header:    #0A0E14;
+  --qp-accent:       #00C9B1;
+  --qp-accent-light: #E0FBF8;
+  --qp-text-h1:      #E8F2FF;
+  --qp-text-h2:      #5CE0D2;
+  --qp-text-body:    #B8C7D9;
+  --qp-text-annot:   #5A7A99;
+  --qp-stroke:       #243040;
+  --qp-divider:      #1B2535;
+  --qp-shadow:       #030508;
+}
+
+.reveal,
+.reveal .slides section {
+  background-color: var(--qp-bg-main) !important;
+}

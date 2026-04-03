@@ -1,0 +1,14 @@
+title: quartopres
+author: 1moi6
+version: 0.1.0
+quarto-required: ">=1.4.0"
+contributes:
+  format:
+    revealjs:
+      theme: [default, quartopres.scss]
+      slide-number: true
+      progress: false
+      hash: true
+      center: false
+      text-align: left
+      mathjax: true

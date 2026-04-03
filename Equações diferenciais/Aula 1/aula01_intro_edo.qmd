@@ -1,0 +1,486 @@
+---
+title: "Introdução às Equações Diferenciais"
+subtitle: "Aula 1 — O que é uma equação diferencial e por que ela aparece"
+institute: "Equações Diferenciais Ordinárias"
+format:
+  revealjs:
+    theme:
+      - default
+      - "../../../Python/manim-layouts/quartopres/_extensions/quartopres/quartopres.scss"
+    slide-number: true
+    progress: false
+    hash: true
+    center: false
+    mathjax: true
+    width: 1600
+    height: 900
+    margin: 0.04
+    include-in-header:
+      text: |
+        <style>
+        :root { --qp-scale: 1.2; }
+        .reveal .slides section,
+        .reveal .slides section.present {
+          padding: 10px 16px !important;
+          box-sizing: border-box !important;
+          max-width: 100% !important;
+        }
+        .reveal .slides section:has(.qp-1t2b,.qp-2t1b,.qp-2l1r,.qp-1l2r,.qp-full,.qp-narrow-wide,.qp-wide-narrow) {
+          display: flex !important;
+          flex-direction: column !important;
+          align-items: stretch !important;
+        }
+        .qp-1t2b, .qp-2t1b, .qp-2l1r, .qp-1l2r,
+        .qp-full, .qp-narrow-wide, .qp-wide-narrow {
+          flex: 1 !important;
+          width: 100% !important;
+          min-height: 0 !important;
+          box-sizing: border-box !important;
+        }
+        </style>
+---
+
+## Uma pergunta simples — sem equações
+
+:::: {.qp-1t2b}
+
+::: {.qp-panel .qp-top .qp-accent}
+Você prepara um café a **90 °C**. A sala está a **20 °C**.
+
+*Quanto tempo leva até o café atingir **60 °C**?*
+:::
+
+::: {.qp-panel .qp-bl .fragment .fade-in}
+[O que você **sabe**:]{.qp-label}
+
+- O café começa quente e esfria.
+- Quanto maior a diferença de temperatura, mais rápido esfria.
+- Eventualmente chega à temperatura da sala.
+:::
+
+::: {.qp-panel .qp-br .fragment .fade-in}
+[O que você **não** sabe:]{.qp-label}
+
+- Em que instante exatamente?
+- A que taxa o resfriamento ocorre?
+- Como calcular isso?
+
+[Para responder com precisão, precisamos de uma linguagem melhor.]{.qp-annot}
+:::
+
+::::
+
+---
+
+## O que a intuição diz sobre a taxa de resfriamento?
+
+:::: {.qp-1t2b}
+
+::: {.qp-panel .qp-top .qp-accent}
+Seja $T(t)$ a temperatura do café no instante $t$ (em minutos).
+A linguagem verbal já contém a ideia-chave:
+
+*"quanto maior a diferença, mais rápido esfria"*
+:::
+
+::: {.qp-panel .qp-bl .fragment .fade-in}
+Em símbolos, uma afirmação sobre a **taxa de variação** de $T$:
+
+$$\frac{dT}{dt} \quad \text{depende de} \quad T(t) - T_m$$
+
+onde $T_m = 20\,°C$ é a temperatura do meio.
+:::
+
+::: {.qp-panel .qp-br .fragment .fade-in}
+[Pergunta]{.qp-label}
+
+Qual é **exatamente** essa dependência?
+
+Como transformar a intuição em equação?
+:::
+
+::::
+
+---
+
+## Hipótese 1 — Temperatura uniforme
+
+:::: {.qp-2l1r}
+
+::: {.qp-panel .qp-lt}
+[Enunciado]{.qp-label}
+
+O café tem **uma única temperatura** em cada instante $t$:
+a função $T(t)$ está bem definida.
+
+[**Custo:** não modelamos gradientes internos nem a xícara em si.]{.qp-annot}
+:::
+
+::: {.qp-panel .qp-lb .fragment .fade-in}
+[Quando é razoável:]{.qp-label}
+
+- Xícara pequena, líquido bem misturado.
+- Não vale para um forno ou para o oceano.
+:::
+
+::: {.qp-panel .qp-r .qp-accent .fragment .fade-in}
+[Ganho]{.qp-label}
+
+$T$ é uma função de **uma** variável — $t$.
+
+[Consequência matemática:]{.qp-label}
+
+Podemos falar de $\frac{dT}{dt}$ — a derivada de $T$ em relação ao tempo está bem definida.
+:::
+
+::::
+
+---
+
+## Hipótese 2 — Lei de Newton do Resfriamento
+
+:::: {.qp-1t2b}
+
+::: {.qp-panel .qp-top .qp-accent}
+[Enunciado]{.qp-label}
+A taxa de variação de $T$ é **proporcional** à diferença $T(t) - T_m$.
+
+[**Custo:** falha para grandes diferenças de temperatura ou se $T_m$ variar ao longo do tempo.]{.qp-annot}
+:::
+
+::: {.qp-panel .qp-bl .qp-graphic .fragment .fade-in}
+$$\frac{dT}{dt} = k\bigl(T(t) - T_m\bigr), \qquad k < 0$$
+:::
+
+::: {.qp-panel .qp-br .fragment .fade-in}
+[A equação emergiu — não foi postulada]{.qp-label}
+
+Cada símbolo carrega uma hipótese:
+
+- $T(t)$: Hipótese 1 — temperatura bem definida.
+- $k$: Hipótese 2 — proporcionalidade; $k<0$ porque o café esfria.
+- $T_m$: temperatura do meio, considerada constante.
+:::
+
+::::
+
+---
+
+## Compare: dois tipos de equação
+
+:::: {.qp-2t1b}
+
+::: {.qp-panel .qp-tl}
+[Equação algébrica]{.qp-label}
+
+$$x^2 + 5x + 4 = 0$$
+
+**Incógnita:** um número $x$.
+
+**Solução:** $x = -1$ ou $x = -4$.
+:::
+
+::: {.qp-panel .qp-tr}
+[Equação diferencial]{.qp-label}
+
+$$\frac{dT}{dt} = k(T - T_m)$$
+
+**Incógnita:** uma *função* $T(t)$.
+
+**Solução:** uma função que satisfaz a relação.
+:::
+
+::: {.qp-panel .qp-bot .qp-accent .fragment .fade-in}
+[Conclusão 1]{.qp-label}
+
+Uma **equação diferencial (ED)** é uma equação que envolve uma função desconhecida
+e suas derivadas. A incógnita é uma *função*, não um número.
+:::
+
+::::
+
+---
+
+## Classificação: vocabulário para descrever EDOs
+
+:::: {.qp-1t2b}
+
+::: {.qp-panel .qp-top .qp-accent .qp-graphic}
+$$\frac{dT}{dt} = k(T - T_m)$$
+:::
+
+::: {.qp-panel .qp-bl}
+[Tipo]{.qp-label}
+
+Derivadas em relação a **uma** variável ($t$)?
+$\Rightarrow$ **EDO** (ordinária)
+
+Derivadas parciais?
+$\Rightarrow$ **EDP** (parcial)
+:::
+
+::: {.qp-panel .qp-br}
+[Ordem]{.qp-label}
+
+Maior derivada presente: $\frac{dT}{dt}$ (1ª derivada)
+$\Rightarrow$ **Ordem 1**
+
+[Linearidade]{.qp-label}
+
+$T$ e $T'$ aparecem ao 1º grau; coeficientes dependem de $t$
+$\Rightarrow$ **Linear**
+:::
+
+::::
+
+---
+
+## Mais exemplos de classificação
+
+:::: {.qp-narrow-wide}
+
+::: {.qp-panel .qp-narrow .qp-accent}
+[Regra para linearidade]{.qp-label}
+
+A EDO de ordem $n$ é **linear** se $y,\, y',\, \ldots,\, y^{(n)}$ aparecem ao **1º grau** e os coeficientes dependem *apenas* da variável independente.
+:::
+
+::: {.qp-panel .qp-wide}
+
+| Equação | Ordem | Linear? |
+|---|:---:|:---:|
+| $\frac{dT}{dt} = k(T - T_m)$ | 1 | Sim |
+| $\frac{d^2y}{dx^2} - 2\frac{dy}{dx} + y = 0$ | 2 | Sim |
+| $\frac{dy}{dx} = xy^{1/2}$ | 1 | Não |
+| $\frac{d^2y}{dx^2} + 5\!\left(\frac{dy}{dx}\right)^{\!3} - 4y = e^x$ | 2 | Não |
+
+:::
+
+::::
+
+---
+
+## O que é uma solução?
+
+:::: {.qp-1t2b}
+
+::: {.qp-panel .qp-top .qp-accent}
+De volta ao café: $\frac{dT}{dt} = k(T - 20)$.
+
+**Afirmação:** a função $T(t) = 20 + 70\,e^{kt}$ satisfaz a equação.
+:::
+
+::: {.qp-panel .qp-bl .qp-graphic .fragment .fade-in}
+$$\frac{dT}{dt} = 70k\,e^{kt}$$
+$$k(T-20) = 70k\,e^{kt} \quad \checkmark$$
+:::
+
+::: {.qp-panel .qp-br .fragment .fade-in}
+[Definição — Solução de uma EDO]{.qp-label}
+
+$\phi(t)$ definida em $I$ é **solução** se, ao substituir na equação, resulta numa **identidade** em $I$.
+
+[$T(t) = 20 + Ce^{kt}$ é solução para qualquer $C$ — **solução geral**.]{.qp-annot}
+:::
+
+::::
+
+---
+
+## Problema de Valor Inicial (PVI)
+
+:::: {.qp-2l1r}
+
+::: {.qp-panel .qp-lt}
+[O problema]{.qp-label}
+
+A família $T(t) = 20 + Ce^{kt}$ tem infinitas soluções.
+
+O café começa a **90 °C** em $t = 0$:
+
+$$\frac{dT}{dt} = k(T - 20), \qquad \underbrace{T(0) = 90}_{\text{condição inicial}}$$
+:::
+
+::: {.qp-panel .qp-lb .fragment .fade-in}
+[Aplicando a condição inicial]{.qp-label}
+
+$$T(0) = 20 + C = 90 \;\Rightarrow\; C = 70$$
+:::
+
+::: {.qp-panel .qp-r .qp-accent .fragment .fade-in}
+[Solução particular]{.qp-label}
+
+$$\boxed{T(t) = 20 + 70\,e^{kt}}$$
+
+[Definição — PVI]{.qp-label}
+
+Um **problema de valor inicial** é uma EDO acompanhada de condições sobre
+a função em um único ponto $t_0$. Resolver o PVI é encontrar a **solução particular**.
+:::
+
+::::
+
+---
+
+## O que a equação já nos diz — sem resolver
+
+:::: {.qp-2t1b}
+
+::: {.qp-panel .qp-tl}
+[Se $T > 20$:]{.qp-label}
+
+$T - 20 > 0$ e $k < 0$
+
+$$\Rightarrow \frac{dT}{dt} < 0$$
+
+O café **esfria**. ✓
+:::
+
+::: {.qp-panel .qp-tr}
+[Se $T < 20$:]{.qp-label}
+
+$T - 20 < 0$ e $k < 0$
+
+$$\Rightarrow \frac{dT}{dt} > 0$$
+
+Um objeto frio **aquece**. ✓
+:::
+
+::: {.qp-panel .qp-bot .qp-accent .fragment .fade-in}
+[Equilíbrio]{.qp-label}
+
+$\frac{dT}{dt} = 0 \;\Leftrightarrow\; T = 20$. A solução constante $T(t) = 20$ é a **solução de equilíbrio**.
+
+Essa análise qualitativa — sem resolver — é uma das três abordagens do curso:
+**analítica**, **qualitativa**, **numérica**.
+:::
+
+::::
+
+---
+
+## Uma equação, muitos fenômenos
+
+:::: {.qp-1t2b}
+
+::: {.qp-panel .qp-top .qp-accent .qp-graphic}
+$$\frac{dy}{dt} = ky$$
+:::
+
+::: {.qp-panel .qp-bl}
+[Crescimento populacional]{.qp-label}
+$y = P(t)$ — população; $k > 0$: crescimento.
+*(Malthus, 1798)*
+
+[Decaimento radioativo]{.qp-label}
+$y = A(t)$ — massa; $k < 0$: decaimento.
+*(datação C-14)*
+:::
+
+::: {.qp-panel .qp-br .fragment .fade-in}
+[Juros compostos]{.qp-label}
+$y = S(t)$ — capital; $k = r > 0$: taxa.
+*(capitalização contínua)*
+
+[Conclusão 2]{.qp-label}
+Uma única EDO pode servir como modelo para fenômenos muito diferentes.
+O que muda é a **interpretação dos símbolos**.
+:::
+
+::::
+
+---
+
+## Síntese — Como chegamos até aqui
+
+:::: {.qp-2l1r}
+
+::: {.qp-panel .qp-lt}
+[Passos 1–3]{.qp-label}
+
+1. Partimos de um **problema concreto**: resfriamento do café.
+2. Formulamos **duas hipóteses** (temperatura uniforme; proporcionalidade).
+3. A EDO **emergiu** das hipóteses: $\frac{dT}{dt} = k(T - T_m)$.
+:::
+
+::: {.qp-panel .qp-lb}
+[Passos 4–6]{.qp-label}
+
+4. Definimos **solução** como função que satisfaz a equação identicamente.
+5. O **PVI** seleciona uma solução particular da família.
+6. A **análise qualitativa** extraiu informação *antes* de resolver.
+:::
+
+::: {.qp-panel .qp-r .qp-accent .fragment .fade-in}
+[Vocabulário da aula]{.qp-label}
+
+- EDO / EDP, ordem, linearidade
+- Solução geral, solução particular
+- Problema de valor inicial (PVI)
+- Solução de equilíbrio
+
+[Três abordagens do curso]{.qp-label}
+
+- **Analítica** — resolver explicitamente
+- **Qualitativa** — análise de sinal, campo de direções
+- **Numérica** — aproximar a solução
+:::
+
+::::
+
+---
+
+## Próxima aula — Uma pergunta que ainda não respondemos
+
+:::: {.qp-2l1r}
+
+::: {.qp-panel .qp-lt}
+[Onde estamos]{.qp-label}
+
+Temos a solução $T(t) = 20 + 70\,e^{kt}$, mas ainda não sabemos $k$.
+
+Para determiná-lo a partir de dados, precisamos **resolver** a equação de forma sistemática.
+:::
+
+::: {.qp-panel .qp-lb .fragment .fade-in}
+[Uma observação útil]{.qp-label}
+
+$$\frac{dT}{dt} = k(T - 20) \quad\Longrightarrow\quad \frac{dT}{T - 20} = k\,dt$$
+
+Isso é coincidência ou existe uma **classe inteira** de equações que admitem essa separação?
+:::
+
+::: {.qp-panel .qp-r .qp-accent .fragment .fade-in}
+[Próxima aula]{.qp-label}
+
+**Equações Separáveis**
+
+Pré-requisito: técnicas de integração — substituição, frações parciais.
+:::
+
+::::
+
+---
+
+## Exercícios
+
+:::: {.qp-full}
+
+::: {.qp-panel .qp-main}
+
+1. Verifique que $y = e^{0{,}1x^2}$ é solução de $\frac{dy}{dx} = 0{,}2xy$ no intervalo $(-\infty, +\infty)$.
+
+2. Classifique quanto a **tipo**, **ordem** e **linearidade**:
+   - (a) $\frac{d^2x}{dt^2} + 16x = 0$
+   - (b) $\frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} = 0$
+   - (c) $(1-y)\,y' + 2y = e^x$
+
+3. Mostre que $y = xe^x$ é solução de $y'' - 2y' + y = 0$.
+
+4. Para o modelo $\frac{dP}{dt} = 0{,}15P + 20$, $P(0) = 100$:
+   - (a) Qual é a taxa de crescimento em $t = 0$?
+   - (b) Sem resolver, diga se $P(t)$ é crescente ou decrescente.
+
+:::
+
+::::

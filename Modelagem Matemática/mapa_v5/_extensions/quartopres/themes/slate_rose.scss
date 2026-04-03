@@ -1,0 +1,24 @@
+/*-- scss:defaults --*/
+/*-- scss:rules --*/
+// slate_rose — cinza-ardósia azulado + rosa profundo
+// Moderno, sofisticado; saúde, psicologia.
+
+:root {
+  --qp-bg-main:      #1A1F2E;
+  --qp-bg-panel:     #242B3E;
+  --qp-bg-header:    #141820;
+  --qp-accent:       #E05678;
+  --qp-accent-light: #FFE8EF;
+  --qp-text-h1:      #F0F2FF;
+  --qp-text-h2:      #F4A6B8;
+  --qp-text-body:    #C8CDD8;
+  --qp-text-annot:   #6070A0;
+  --qp-stroke:       #323A52;
+  --qp-divider:      #282F44;
+  --qp-shadow:       #06050A;
+}
+
+.reveal,
+.reveal .slides section {
+  background-color: var(--qp-bg-main) !important;
+}
